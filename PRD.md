@@ -1801,6 +1801,7 @@ src/
 │   └── pages/                    # Route-level pages
 │       ├── Home/
 │       ├── Login/
+│       ├── Signup/
 │       ├── StudentDashboard/
 │       ├── LessonViewer/
 │       ├── QuizAttempt/
