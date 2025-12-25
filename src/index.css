@@ -1,44 +1,83 @@
 @import "tailwindcss";
-
 @plugin "daisyui";
 
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 @plugin "daisyui/theme" {
-    name: "gyansetu";
-    default: true;
-    prefersdark: false;
-    color-scheme: "light";
-    --color-base-100: oklch(98% 0.005 85);
-    --color-base-200: oklch(94% 0.008 85);
-    --color-base-300: oklch(88% 0.012 85);
-    --color-base-content: oklch(25% 0.015 240);
-    --color-primary: oklch(68% 0.19 55);
-    --color-primary-content: oklch(100% 0 0);
-    --color-secondary: oklch(62% 0.17 145);
-    --color-secondary-content: oklch(100% 0 0);
-    --color-accent: oklch(60% 0.15 250);
-    --color-accent-content: oklch(100% 0 0);
-    --color-neutral: oklch(35% 0.02 240);
-    --color-neutral-content: oklch(95% 0.01 240);
-    --color-info: oklch(65% 0.16 240);
-    --color-info-content: oklch(100% 0 0);
-    --color-success: oklch(68% 0.18 145);
-    --color-success-content: oklch(20% 0.05 145);
-    --color-warning: oklch(78% 0.16 75);
-    --color-warning-content: oklch(25% 0.05 75);
-    --color-error: oklch(62% 0.22 25);
-    --color-error-content: oklch(100% 0 0);
-    --radius-selector: 0.5rem;
-    --radius-field: 0.5rem;
-    --radius-box: 1rem;
-    --size-selector: 0.25rem;
-    --size-field: 0.25rem;
-    --border: 1px;
-    --depth: 1;
-    --noise: 0;
+  name: "gyansetu";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-primary: oklch(65% 0.15 40); /* Warm Terracotta */
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(65% 0.12 150); /* Nature Green */
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(60% 0.15 230); /* Sky Blue */
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(35% 0.02 240);
+  --color-neutral-content: oklch(95% 0.01 240);
+  --color-base-100: oklch(98% 0.005 85);
+  --color-base-200: oklch(94% 0.008 85);
+  --color-base-300: oklch(88% 0.012 85);
+  --color-base-content: oklch(25% 0.015 240);
+  --color-info: oklch(65% 0.16 240);
+  --color-info-content: oklch(100% 0 0);
+  --color-success: oklch(68% 0.18 145);
+  --color-success-content: oklch(20% 0.05 145);
+  --color-warning: oklch(78% 0.16 75);
+  --color-warning-content: oklch(25% 0.05 75);
+  --color-error: oklch(62% 0.22 25);
+  --color-error-content: oklch(100% 0 0);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
 }
 
-:root{
-    font-family: 'Playfair Display', 'serif'
+@plugin "daisyui/theme" {
+  name: "gyansetu-dark";
+  prefersdark: true;
+  color-scheme: "dark";
+  --color-primary: oklch(70% 0.14 40);
+  --color-primary-content: oklch(20% 0.01 40);
+  --color-secondary: oklch(70% 0.1 150);
+  --color-secondary-content: oklch(20% 0.01 150);
+  --color-accent: oklch(70% 0.12 230);
+  --color-accent-content: oklch(20% 0.01 230);
+  --color-neutral: oklch(25% 0.02 240);
+  --color-neutral-content: oklch(90% 0.01 240);
+  --color-base-100: oklch(20% 0.01 240);
+  --color-base-200: oklch(15% 0.01 240);
+  --color-base-300: oklch(10% 0.01 240);
+  --color-base-content: oklch(95% 0.01 240);
+  --color-info: oklch(70% 0.12 240);
+  --color-success: oklch(75% 0.15 145);
+  --color-warning: oklch(85% 0.12 75);
+  --color-error: oklch(70% 0.18 25);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+:root {
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-serif);
+}
+
+@layer base {
+  body {
+    @apply bg-base-100 text-base-content antialiased;
+  }
 }
