@@ -6,6 +6,7 @@ export interface User {
   phone: string;
   role: UserRole;
   languagePreference: string;
+  syncToken?: string;
 }
 
 export type DownloadStatus = 'not_downloaded' | 'pending' | 'downloaded';

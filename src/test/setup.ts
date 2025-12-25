@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 import { expect, afterEach, beforeAll, afterAll } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import { server } from './server';
+import 'fake-indexeddb/auto';
 
 // Start server before all tests
 beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
