@@ -87,7 +87,7 @@
 - [X] T022 [US4] Implement useProgressStore for local tracking in src/store/useProgressStore.ts
 - [X] T023 [US4] Implement background sync trigger in src/hooks/useOfflineSync.ts
 - [X] T024 [P] [US4] Create Progress Dashboard organism in src/components/organisms/ProgressDashboard/ProgressDashboard.tsx
-- [ ] T025 [US4] Integrate sync status indicator in src/components/organisms/SyncStatus/SyncStatus.tsx
+- [X] T025 [US4] Integrate sync status indicator in src/components/organisms/SyncStatus/SyncStatus.tsx
 
 ---
 
