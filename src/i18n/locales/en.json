@@ -12,5 +12,14 @@
     "punjabi": "Punjabi",
     "hindi": "Hindi",
     "english": "English"
+  },
+  "progress": {
+    "title": "Your Progress",
+    "lessonsCompleted": "Lessons Completed",
+    "averageScore": "Average Score",
+    "recentActivity": "Recent Activity",
+    "completed": "Completed",
+    "inProgress": "In Progress",
+    "notStarted": "Not Started"
   }
 }
