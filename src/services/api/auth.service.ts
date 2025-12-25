@@ -1,6 +1,6 @@
 import type { User } from '../../types';
 
-const API_BASE_URL = '/api'; // Placeholder, should be moved to env config later
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 export interface AuthResponse {
   user: User;
