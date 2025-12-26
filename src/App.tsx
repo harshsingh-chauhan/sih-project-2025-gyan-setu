@@ -17,6 +17,7 @@ const LessonViewer = lazy(() => import('./components/pages/LessonViewer/LessonVi
 const StudentDashboard = lazy(() => import('./components/pages/StudentDashboard/StudentDashboard').then(module => ({ default: module.StudentDashboard })));
 const LessonList = lazy(() => import('./components/pages/LessonList/LessonList').then(module => ({ default: module.LessonList })));
 const TeacherDashboard = lazy(() => import('./components/pages/TeacherDashboard/TeacherDashboard').then(module => ({ default: module.TeacherDashboard })));
+const QuizAttempt = lazy(() => import('./components/pages/QuizAttempt/QuizAttempt').then(module => ({ default: module.QuizAttempt })));
 
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<div className="h-screen w-full flex items-center justify-center"><Spinner /></div>}>
@@ -116,6 +117,10 @@ const router = createBrowserRouter([
         element: <SuspenseWrapper><LessonViewer /></SuspenseWrapper>,
       },
     ],
+  },
+  {
+    path: '/quiz/:id',
+    element: <SuspenseWrapper><QuizAttempt /></SuspenseWrapper>,
   },
   {
     path: '*',
