@@ -6,11 +6,11 @@ export const SideBar: React.FC = () => {
     const location = useLocation();
 
     const menuItems = [
-        { name: 'Dashboard', path: '/', icon: LayoutDashboard },
-        { name: 'Lessons', path: '/lessons', icon: BookOpen },
-        { name: 'Downloads', path: '/downloads', icon: Download },
-        { name: 'Progress', path: '/progress', icon: GraduationCap },
-        { name: 'Profile', path: '/profile', icon: User },
+        { name: 'Dashboard', path: '/app/dashboard', icon: LayoutDashboard },
+        { name: 'Lessons', path: '/app/lessons', icon: BookOpen },
+        { name: 'Downloads', path: '/app/downloads', icon: Download },
+        { name: 'Progress', path: '/app/progress', icon: GraduationCap },
+        { name: 'Profile', path: '/app/profile', icon: User },
     ];
 
     return (

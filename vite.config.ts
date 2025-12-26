@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     tailwindcss(),
@@ -38,7 +38,7 @@ export default defineConfig({
       }
     })
   ],
-  base: '/sih-project-2025-gyan-setu/',
+  base: mode === 'production' ? '/sih-project-2025-gyan-setu/' : '/',
   build: {
     rollupOptions: {
       output: {
@@ -56,4 +56,4 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/test/setup.ts',
   },
-})
+}))

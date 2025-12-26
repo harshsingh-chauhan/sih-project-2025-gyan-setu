@@ -1,12 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LanguageSwitcher } from '../../molecules/LanguageSwitcher/LanguageSwitcher';
+import { useAuthStore } from '../../../store/useAuthStore';
 
 export const Header: React.FC = () => {
+    const logout = useAuthStore((state) => state.logout);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate('/');
+    };
+
     return (
         <header className="navbar bg-primary text-primary-content shadow-lg">
             <div className="flex-1">
-                <Link to="/" className="btn btn-ghost text-xl">Gyan Setu</Link>
+                <Link to="/app/dashboard" className="btn btn-ghost text-xl">Gyan Setu</Link>
             </div>
             <div className="flex-none gap-2">
                 <div className="form-control hidden md:block">
@@ -20,9 +29,9 @@ export const Header: React.FC = () => {
                         </div>
                     </button>
                     <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 text-base-content">
-                        <li><Link to="/profile">Profile</Link></li>
+                        <li><Link to="/app/profile">Profile</Link></li>
                         <li><a>Settings</a></li>
-                        <li><Link to="/login">Logout</Link></li>
+                        <li><button onClick={handleLogout}>Logout</button></li>
                     </ul>
                 </div>
             </div>

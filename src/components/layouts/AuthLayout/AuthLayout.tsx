@@ -8,7 +8,7 @@ export const AuthLayout: React.FC = () => {
 
     useEffect(() => {
         if (isAuthenticated) {
-            navigate('/', { replace: true });
+            navigate('/app/dashboard', { replace: true });
         }
     }, [isAuthenticated, navigate]);
 
