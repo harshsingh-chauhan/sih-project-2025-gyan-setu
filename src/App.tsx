@@ -22,6 +22,7 @@ const Progress = lazy(() => import('./components/pages/Progress/Progress').then(
 const TeacherReports = lazy(() => import('./components/pages/TeacherReports/TeacherReports').then(module => ({ default: module.TeacherReports })));
 const ParentDashboard = lazy(() => import('./components/pages/ParentDashboard/ParentDashboard').then(module => ({ default: module.ParentDashboard })));
 const AdminDashboard = lazy(() => import('./components/pages/AdminDashboard/AdminDashboard').then(module => ({ default: module.AdminDashboard })));
+const Profile = lazy(() => import('./components/pages/Profile/Profile').then(module => ({ default: module.Profile })));
 
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<div className="h-screen w-full flex items-center justify-center"><Spinner /></div>}>
@@ -70,7 +71,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'profile',
-        element: <div className="p-4 text-2xl">Profile Page (Coming Soon)</div>,
+        element: <SuspenseWrapper><Profile /></SuspenseWrapper>,
       },
       {
         path: 'library',
