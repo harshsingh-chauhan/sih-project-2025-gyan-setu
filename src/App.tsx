@@ -6,6 +6,8 @@ import { LessonViewerLayout } from './components/layouts/LessonViewerLayout/Less
 import { Spinner } from './components/atoms/Spinner/Spinner';
 import './App.css';
 
+import ErrorPage from './components/pages/ErrorPage';
+
 // Lazy load page components
 const Home = lazy(() => import('./components/pages/Home/Home').then(module => ({ default: module.Home })));
 const Login = lazy(() => import('./components/pages/Login/Login').then(module => ({ default: module.Login })));
@@ -21,11 +23,29 @@ const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <SuspenseWrapper><Home /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    element: <AuthLayout />,
+    children: [
+      {
+        path: 'login',
+        element: <SuspenseWrapper><Login /></SuspenseWrapper>,
+      },
+      {
+        path: 'signup',
+        element: <SuspenseWrapper><SignUp /></SuspenseWrapper>,
+      },
+    ],
+  },
+  {
+    path: '/app',
     element: <MainLayout />,
     children: [
       {
-        index: true,
-        element: <SuspenseWrapper><Home /></SuspenseWrapper>,
+        path: 'dashboard',
+        element: <div className="p-4 text-2xl">Student Dashboard (Coming Soon)</div>,
       },
       {
         path: 'lessons',
@@ -52,20 +72,6 @@ const router = createBrowserRouter([
       {
         path: ':id',
         element: <SuspenseWrapper><LessonViewer /></SuspenseWrapper>,
-      },
-    ],
-  },
-  {
-    path: '/',
-    element: <AuthLayout />,
-    children: [
-      {
-        path: 'login',
-        element: <SuspenseWrapper><Login /></SuspenseWrapper>,
-      },
-      {
-        path: 'signup',
-        element: <SuspenseWrapper><SignUp /></SuspenseWrapper>,
       },
     ],
   },
