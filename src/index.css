@@ -184,6 +184,13 @@
   --color-profile-text-sec: #a0c695;
   --color-profile-border-dark: #2d4625;
 
+  /* Settings Page Colors */
+  --color-settings-primary: #4cdf20;
+  --color-settings-bg-dark: #152112;
+  --color-settings-surface-dark: #20321b;
+  --color-settings-border-dark: #2d4625;
+  --color-settings-text-muted: #a0c695;
+
   --radius: 1rem;
   --radius-lg: 1.5rem;
   --radius-xl: 2rem;

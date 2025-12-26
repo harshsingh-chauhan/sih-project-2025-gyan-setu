@@ -23,6 +23,7 @@ const TeacherReports = lazy(() => import('./components/pages/TeacherReports/Teac
 const ParentDashboard = lazy(() => import('./components/pages/ParentDashboard/ParentDashboard').then(module => ({ default: module.ParentDashboard })));
 const AdminDashboard = lazy(() => import('./components/pages/AdminDashboard/AdminDashboard').then(module => ({ default: module.AdminDashboard })));
 const Profile = lazy(() => import('./components/pages/Profile/Profile').then(module => ({ default: module.Profile })));
+const Settings = lazy(() => import('./components/pages/Settings/Settings').then(module => ({ default: module.Settings })));
 
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<div className="h-screen w-full flex items-center justify-center"><Spinner /></div>}>
@@ -87,7 +88,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'settings',
-        element: <div className="p-4 text-2xl">Settings Page (Coming Soon)</div>,
+        element: <SuspenseWrapper><Settings /></SuspenseWrapper>,
       },
     ],
   },
