@@ -15,6 +15,7 @@ const Login = lazy(() => import('./components/pages/Login/Login').then(module =>
 const SignUp = lazy(() => import('./components/pages/SignUp/SignUp').then(module => ({ default: module.SignUp })));
 const LessonViewer = lazy(() => import('./components/pages/LessonViewer/LessonViewer').then(module => ({ default: module.LessonViewer })));
 const StudentDashboard = lazy(() => import('./components/pages/StudentDashboard/StudentDashboard').then(module => ({ default: module.StudentDashboard })));
+const LessonList = lazy(() => import('./components/pages/LessonList/LessonList').then(module => ({ default: module.LessonList })));
 const TeacherDashboard = lazy(() => import('./components/pages/TeacherDashboard/TeacherDashboard').then(module => ({ default: module.TeacherDashboard })));
 
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'lessons',
-        element: <div className="p-4 text-2xl">Lessons Page (Coming Soon)</div>,
+        element: <SuspenseWrapper><LessonList /></SuspenseWrapper>,
       },
       {
         path: 'downloads',
