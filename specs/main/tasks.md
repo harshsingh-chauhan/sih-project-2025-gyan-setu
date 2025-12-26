@@ -94,7 +94,7 @@
 ## Phase 7: Polish & Cross-Cutting Concerns
 
 - [X] T026 [P] Final Accessibility (WCAG 2.1 AA) audit on all interactive components
-- [ ] T027 [P] Update quickstart.md with deployment and sync testing instructions
+- [X] T027 [P] Update quickstart.md with deployment and sync testing instructions
 - [ ] T028 Performance profiling for initial load on slow networks
 - [ ] T029 Code cleanup and final type check
 
