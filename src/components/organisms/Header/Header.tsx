@@ -10,15 +10,15 @@ export const Header: React.FC = () => {
             </div>
             <div className="flex-none gap-2">
                 <div className="form-control hidden md:block">
-                    <input type="text" placeholder="Search lessons..." className="input input-bordered w-24 md:w-auto text-base-content" />
+                    <input type="text" placeholder="Search lessons..." aria-label="Search lessons" className="input input-bordered w-24 md:w-auto text-base-content" />
                 </div>
                 <LanguageSwitcher />
                 <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                    <button tabIndex={0} className="btn btn-ghost btn-circle avatar" aria-label="User menu">
                         <div className="w-10 rounded-full">
                             <img alt="User profile" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
                         </div>
-                    </div>
+                    </button>
                     <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 text-base-content">
                         <li><Link to="/profile">Profile</Link></li>
                         <li><a>Settings</a></li>

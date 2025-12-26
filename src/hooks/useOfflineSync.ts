@@ -7,7 +7,7 @@ import { syncManager } from '../services/sync/syncManager';
  * reconnects to the internet. It leverages the syncManager for merging logic.
  */
 export const useOfflineSync = () => {
-  const { user, token, isAuthenticated, updateUser } = useAuthStore();
+  const { isAuthenticated, updateUser } = useAuthStore();
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [isSyncing, setIsSyncing] = useState(false);
   const [lastSyncError, setLastSyncError] = useState<string | null>(null);

@@ -1,12 +1,22 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import { MainLayout } from './components/layouts/MainLayout/MainLayout';
 import { AuthLayout } from './components/layouts/AuthLayout/AuthLayout';
 import { LessonViewerLayout } from './components/layouts/LessonViewerLayout/LessonViewerLayout';
-import { Home } from './components/pages/Home/Home';
-import { Login } from './components/pages/Login/Login';
-import { SignUp } from './components/pages/SignUp/SignUp';
-import { LessonViewer } from './components/pages/LessonViewer/LessonViewer';
+import { Spinner } from './components/atoms/Spinner/Spinner';
 import './App.css';
+
+// Lazy load page components
+const Home = lazy(() => import('./components/pages/Home/Home').then(module => ({ default: module.Home })));
+const Login = lazy(() => import('./components/pages/Login/Login').then(module => ({ default: module.Login })));
+const SignUp = lazy(() => import('./components/pages/SignUp/SignUp').then(module => ({ default: module.SignUp })));
+const LessonViewer = lazy(() => import('./components/pages/LessonViewer/LessonViewer').then(module => ({ default: module.LessonViewer })));
+
+const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
+  <Suspense fallback={<div className="h-screen w-full flex items-center justify-center"><Spinner /></div>}>
+    {children}
+  </Suspense>
+);
 
 const router = createBrowserRouter([
   {
@@ -15,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <SuspenseWrapper><Home /></SuspenseWrapper>,
       },
       {
         path: 'lessons',
@@ -41,7 +51,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: ':id',
-        element: <LessonViewer />,
+        element: <SuspenseWrapper><LessonViewer /></SuspenseWrapper>,
       },
     ],
   },
@@ -51,11 +61,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <Login />,
+        element: <SuspenseWrapper><Login /></SuspenseWrapper>,
       },
       {
         path: 'signup',
-        element: <SignUp />,
+        element: <SuspenseWrapper><SignUp /></SuspenseWrapper>,
       },
     ],
   },

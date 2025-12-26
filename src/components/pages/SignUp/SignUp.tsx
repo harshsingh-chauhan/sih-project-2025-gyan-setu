@@ -45,16 +45,17 @@ export const SignUp: React.FC = () => {
     return (
         <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
-                <div className="alert alert-error shadow-lg">
+                <div role="alert" className="alert alert-error shadow-lg">
                     <span>{error}</span>
                 </div>
             )}
 
             <div className="form-control w-full">
-                <label className="label">
+                <label className="label" htmlFor="name-input">
                     <span className="label-text">Full Name</span>
                 </label>
                 <input 
+                    id="name-input"
                     type="text" 
                     placeholder="Enter your full name" 
                     className="input input-bordered w-full" 
@@ -65,10 +66,11 @@ export const SignUp: React.FC = () => {
             </div>
 
             <div className="form-control w-full">
-                <label className="label">
+                <label className="label" htmlFor="phone-input">
                     <span className="label-text">Phone Number</span>
                 </label>
                 <input 
+                    id="phone-input"
                     type="tel" 
                     placeholder="Enter your phone number" 
                     className="input input-bordered w-full" 
@@ -84,10 +86,10 @@ export const SignUp: React.FC = () => {
                 onChange={setPin}
             />
 
-            <div className="form-control w-full">
-                <label className="label text-sm text-base-content opacity-70">
+            <fieldset className="form-control w-full">
+                <legend className="label text-sm text-base-content opacity-70">
                     Role
-                </label>
+                </legend>
                 <div className="flex gap-4 mt-1">
                     <label className="label cursor-pointer gap-2">
                         <input 
@@ -110,7 +112,8 @@ export const SignUp: React.FC = () => {
                         <span className="label-text">Teacher</span>
                     </label>
                 </div>
-            </div>
+            </fieldset>
+
 
             <div>
                 <button 

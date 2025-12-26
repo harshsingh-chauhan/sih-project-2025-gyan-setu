@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { db } from '../services/storage/dexie.db';
 import type { Progress, ProgressEvent } from '../types';
 
-interface ProgressState {
+export interface ProgressState {
   progress: Record<string, Progress>; // Keyed by lessonId for the current user
   isLoading: boolean;
   error: string | null;
@@ -14,7 +14,7 @@ interface ProgressState {
   clearProgress: () => void;
 }
 
-export const useProgressStore = create<ProgressState>((set, get) => ({
+export const useProgressStore = create<ProgressState>((set) => ({
   progress: {},
   isLoading: false,
   error: null,

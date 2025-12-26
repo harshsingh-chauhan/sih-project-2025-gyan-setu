@@ -29,9 +29,9 @@ export const LanguageSwitcher: React.FC = () => {
 
   return (
     <div className="dropdown dropdown-end">
-      <div 
+      <button 
+        type="button"
         tabIndex={0} 
-        role="button" 
         className="btn btn-ghost btn-sm gap-2 normal-case font-medium"
         aria-label="Select Language"
       >
@@ -40,7 +40,7 @@ export const LanguageSwitcher: React.FC = () => {
           {languages.find((l) => l.code === currentLang)?.native || 'Language'}
         </span>
         <span className="sm:hidden uppercase">{currentLang}</span>
-      </div>
+      </button>
       <ul 
         tabIndex={0} 
         className="dropdown-content z-[1] menu p-2 shadow-lg bg-base-100 rounded-box w-52 mt-2 border border-base-200"

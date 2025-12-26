@@ -39,7 +39,7 @@ export const LessonCard: React.FC<LessonCardProps> = ({ lesson, onView }) => {
 
   return (
     <div className="card card-compact bg-base-100 shadow-xl border border-base-200 hover:border-primary/50 transition-colors group">
-      <figure className="aspect-video bg-base-300 relative">
+      <figure className="aspect-video bg-base-300 relative" role="img" aria-label={`Cover image for ${lesson.title.en}`}>
         <div className="absolute top-2 right-2 z-10">
           {getStatusBadge()}
         </div>
@@ -73,6 +73,7 @@ export const LessonCard: React.FC<LessonCardProps> = ({ lesson, onView }) => {
                 onClick={(e) => { e.stopPropagation(); removeDownload(); }}
                 className="btn btn-ghost btn-sm btn-square text-error"
                 title="Remove Offline Content"
+                aria-label="Remove Offline Content"
               >
                 <Trash2 className="w-4 h-4" />
               </button>
@@ -82,6 +83,7 @@ export const LessonCard: React.FC<LessonCardProps> = ({ lesson, onView }) => {
                 className={`btn btn-ghost btn-sm btn-square text-primary ${isDownloading ? 'loading' : ''}`}
                 disabled={isDownloading}
                 title="Download for Offline"
+                aria-label="Download for Offline"
               >
                 {!isDownloading && <Download className="w-4 h-4" />}
               </button>

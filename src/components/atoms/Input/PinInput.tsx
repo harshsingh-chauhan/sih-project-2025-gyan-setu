@@ -5,9 +5,14 @@ interface PinInputProps {
   onChange: (value: string) => void;
   error?: string;
   label?: string;
+  id?: string;
 }
 
-export const PinInput: React.FC<PinInputProps> = ({ value, onChange, error, label }) => {
+export const PinInput: React.FC<PinInputProps> = ({ value, onChange, error, label, id }) => {
+  const uniqueId = React.useId();
+  const inputId = id || `pin-input-${uniqueId}`;
+  const errorId = `pin-error-${uniqueId}`;
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value.replace(/\D/g, '').slice(0, 4);
     onChange(val);
@@ -16,11 +21,12 @@ export const PinInput: React.FC<PinInputProps> = ({ value, onChange, error, labe
   return (
     <div className="form-control w-full">
       {label && (
-        <label className="label">
+        <label className="label" htmlFor={inputId}>
           <span className="label-text">{label}</span>
         </label>
       )}
       <input
+        id={inputId}
         type="password"
         inputMode="numeric"
         autoComplete="one-time-code"
@@ -33,9 +39,11 @@ export const PinInput: React.FC<PinInputProps> = ({ value, onChange, error, labe
           error ? 'input-error' : ''
         }`}
         required
+        aria-invalid={!!error}
+        aria-describedby={error ? errorId : undefined}
       />
       {error && (
-        <label className="label">
+        <label className="label" id={errorId}>
           <span className="label-text-alt text-error">{error}</span>
         </label>
       )}

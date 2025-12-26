@@ -39,6 +39,18 @@ export default defineConfig({
     })
   ],
   base: '/sih-project-2025-gyan-setu/',
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'ui-vendor': ['lucide-react'],
+          'db-vendor': ['dexie', 'dexie-react-hooks'],
+          'utils-vendor': ['i18next', 'react-i18next', 'zustand', 'idb'],
+        },
+      },
+    },
+  },
   test: {
     globals: true,
     environment: 'jsdom',

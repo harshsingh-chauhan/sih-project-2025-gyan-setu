@@ -69,16 +69,17 @@ export const Login: React.FC = () => {
     return (
         <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
-                <div className={`alert ${lockoutUntil ? 'alert-warning' : 'alert-error'} shadow-lg`}>
+                <div role="alert" className={`alert ${lockoutUntil ? 'alert-warning' : 'alert-error'} shadow-lg`}>
                     <span>{error}</span>
                 </div>
             )}
 
             <div className="form-control w-full">
-                <label className="label">
+                <label className="label" htmlFor="phone-input">
                     <span className="label-text">Phone Number</span>
                 </label>
                 <input 
+                    id="phone-input"
                     type="tel" 
                     placeholder="Enter your phone number" 
                     className="input input-bordered w-full" 
@@ -98,8 +99,8 @@ export const Login: React.FC = () => {
 
             <div className="flex items-center justify-between">
                 <div className="form-control">
-                    <label className="label cursor-pointer gap-2">
-                        <input type="checkbox" className="checkbox checkbox-primary" />
+                    <label className="label cursor-pointer gap-2" htmlFor="remember-me">
+                        <input id="remember-me" type="checkbox" className="checkbox checkbox-primary" />
                         <span className="label-text">Remember me</span>
                     </label>
                 </div>

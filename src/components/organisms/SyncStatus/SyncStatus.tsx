@@ -15,6 +15,8 @@ export const SyncStatus: React.FC = () => {
     <div className="flex items-center gap-2">
       {/* Network Status Badge */}
       <div 
+        role="status"
+        aria-label={isOnline ? t('sync.online') : t('sync.offline')}
         className={`badge gap-1.5 py-3 px-3 transition-colors ${
           isOnline ? 'badge-success bg-success/10 text-success border-success/20' : 'badge-error bg-error/10 text-error border-error/20'
         }`}
@@ -40,7 +42,13 @@ export const SyncStatus: React.FC = () => {
           </div>
         ) : lastSyncError ? (
           <div className="flex items-center gap-2">
-            <div className="tooltip tooltip-bottom tooltip-error" data-tip={lastSyncError}>
+            <div 
+              tabIndex={0}
+              role="button"
+              aria-label={`Sync error: ${lastSyncError}`}
+              className="tooltip tooltip-bottom tooltip-error" 
+              data-tip={lastSyncError}
+            >
               <AlertCircle className="w-4 h-4 text-error" />
             </div>
             <button 

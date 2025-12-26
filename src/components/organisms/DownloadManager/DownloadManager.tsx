@@ -43,7 +43,7 @@ const DownloadItem: React.FC<{ lesson: Lesson }> = ({ lesson }) => {
         </div>
       </div>
       {(isDownloading || lesson.downloadStatus === 'pending') && (
-        <progress className="progress progress-primary w-full h-1" value={progress} max="100"></progress>
+        <progress aria-label="Download progress" className="progress progress-primary w-full h-1" value={progress} max="100"></progress>
       )}
     </div>
   );
@@ -75,7 +75,7 @@ export const DownloadManager: React.FC = () => {
   const limitMB = 500;
   const usagePercentage = Math.min((usage / (limitMB * 1024 * 1024)) * 100, 100);
 
-  if (!downloadingOrDownloadedLessons) return <div className="p-4 text-center">Loading...</div>;
+  if (!downloadingOrDownloadedLessons) return <div role="status" className="p-4 text-center">Loading...</div>;
 
   return (
     <div className="card bg-base-100 shadow-xl border border-base-200 overflow-hidden max-w-md w-full">
@@ -85,7 +85,7 @@ export const DownloadManager: React.FC = () => {
             <h3 className="card-title text-base font-bold">Downloads</h3>
             <span className="text-xs font-medium">{usageMB} MB / {limitMB} MB</span>
           </div>
-          <progress className={`progress w-full ${usagePercentage > 90 ? 'progress-error' : 'progress-primary'}`} value={usagePercentage} max="100"></progress>
+          <progress aria-label="Storage usage" className={`progress w-full ${usagePercentage > 90 ? 'progress-error' : 'progress-primary'}`} value={usagePercentage} max="100"></progress>
         </div>
 
         <div className="max-h-96 overflow-y-auto">
