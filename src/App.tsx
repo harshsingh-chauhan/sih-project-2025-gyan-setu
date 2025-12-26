@@ -20,6 +20,7 @@ const TeacherDashboard = lazy(() => import('./components/pages/TeacherDashboard/
 const QuizAttempt = lazy(() => import('./components/pages/QuizAttempt/QuizAttempt').then(module => ({ default: module.QuizAttempt })));
 const Progress = lazy(() => import('./components/pages/Progress/Progress').then(module => ({ default: module.Progress })));
 const DigitalLiteracy = lazy(() => import('./components/pages/DigitalLiteracy/DigitalLiteracy').then(module => ({ default: module.DigitalLiteracy })));
+const Downloads = lazy(() => import('./components/pages/Downloads/Downloads').then(module => ({ default: module.Downloads })));
 
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<div className="h-screen w-full flex items-center justify-center"><Spinner /></div>}>
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'downloads',
-        element: <div className="p-4 text-2xl">Downloads Page (Coming Soon)</div>,
+        element: <SuspenseWrapper><Downloads /></SuspenseWrapper>,
       },
       {
         path: 'progress',
