@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import { MainLayout } from './components/layouts/MainLayout/MainLayout';
+import { StudentDashboardLayout } from './components/layouts/StudentDashboardLayout/StudentDashboardLayout';
+import { TeacherDashboardLayout } from './components/layouts/TeacherDashboardLayout/TeacherDashboardLayout';
 import { AuthLayout } from './components/layouts/AuthLayout/AuthLayout';
 import { LessonViewerLayout } from './components/layouts/LessonViewerLayout/LessonViewerLayout';
 import { Spinner } from './components/atoms/Spinner/Spinner';
@@ -13,6 +14,24 @@ const Home = lazy(() => import('./components/pages/Home/Home').then(module => ({
 const Login = lazy(() => import('./components/pages/Login/Login').then(module => ({ default: module.Login })));
 const SignUp = lazy(() => import('./components/pages/SignUp/SignUp').then(module => ({ default: module.SignUp })));
 const LessonViewer = lazy(() => import('./components/pages/LessonViewer/LessonViewer').then(module => ({ default: module.LessonViewer })));
+const StudentDashboard = lazy(() => import('./components/pages/StudentDashboard/StudentDashboard').then(module => ({ default: module.StudentDashboard })));
+const LessonList = lazy(() => import('./components/pages/LessonList/LessonList').then(module => ({ default: module.LessonList })));
+const TeacherDashboard = lazy(() => import('./components/pages/TeacherDashboard/TeacherDashboard').then(module => ({ default: module.TeacherDashboard })));
+const QuizAttempt = lazy(() => import('./components/pages/QuizAttempt/QuizAttempt').then(module => ({ default: module.QuizAttempt })));
+const Progress = lazy(() => import('./components/pages/Progress/Progress').then(module => ({ default: module.Progress })));
+const Downloads = lazy(() => import('./components/pages/Downloads/Downloads').then(module => ({ default: module.Downloads })));
+const DigitalLiteracy = lazy(() => import('./components/pages/DigitalLiteracy/DigitalLiteracy').then(module => ({ default: module.DigitalLiteracy })));
+const TeacherReports = lazy(() => import('./components/pages/TeacherReports/TeacherReports').then(module => ({ default: module.TeacherReports })));
+const TeacherClassOverview = lazy(() => import('./components/pages/TeacherClassOverview/TeacherClassOverview').then(module => ({ default: module.TeacherClassOverview })));
+const TeacherContent = lazy(() => import('./components/pages/TeacherContent/TeacherContent').then(module => ({ default: module.TeacherContent })));
+const ParentDashboard = lazy(() => import('./components/pages/ParentDashboard/ParentDashboard').then(module => ({ default: module.ParentDashboard })));
+const AdminDashboard = lazy(() => import('./components/pages/AdminDashboard/AdminDashboard').then(module => ({ default: module.AdminDashboard })));
+const Profile = lazy(() => import('./components/pages/Profile/Profile').then(module => ({ default: module.Profile })));
+const Settings = lazy(() => import('./components/pages/Settings/Settings').then(module => ({ default: module.Settings })));
+const Support = lazy(() => import('./components/pages/Support/Support').then(module => ({ default: module.Support })));
+const ForgotPassword = lazy(() => import('./components/pages/ForgotPassword/ForgotPassword').then(module => ({ default: module.ForgotPassword })));
+const ForgotPasswordConfirmation = lazy(() => import('./components/pages/ForgotPassword/ForgotPasswordConfirmation').then(module => ({ default: module.ForgotPasswordConfirmation })));
+const SetNewPassword = lazy(() => import('./components/pages/ForgotPassword/SetNewPassword').then(module => ({ default: module.SetNewPassword })));
 
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<div className="h-screen w-full flex items-center justify-center"><Spinner /></div>}>
@@ -28,52 +47,139 @@ const router = createBrowserRouter([
   },
   {
     element: <AuthLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: 'login',
         element: <SuspenseWrapper><Login /></SuspenseWrapper>,
       },
+    ],
+  },
+  {
+    path: 'signup',
+    element: <SuspenseWrapper><SignUp /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/app',
+    element: <StudentDashboardLayout />,
+    errorElement: <ErrorPage />,
+    children: [
       {
-        path: 'signup',
-        element: <SuspenseWrapper><SignUp /></SuspenseWrapper>,
+        path: 'dashboard',
+        element: <SuspenseWrapper><StudentDashboard /></SuspenseWrapper>,
+      },
+      {
+        path: 'lessons',
+        element: <SuspenseWrapper><LessonList /></SuspenseWrapper>,
+      },
+      {
+        path: 'downloads',
+        element: <SuspenseWrapper><Downloads /></SuspenseWrapper>,
+      },
+      {
+        path: 'progress',
+        element: <SuspenseWrapper><Progress /></SuspenseWrapper>,
+      },
+      {
+        path: 'profile',
+        element: <SuspenseWrapper><Profile /></SuspenseWrapper>,
+      },
+      {
+        path: 'library',
+        element: <div className="p-4 text-2xl">Library Page (Coming Soon)</div>,
+      },
+      {
+        path: 'digital-literacy',
+        element: <SuspenseWrapper><DigitalLiteracy /></SuspenseWrapper>,
+      },
+      {
+        path: 'achievements',
+        element: <div className="p-4 text-2xl">Achievements Page (Coming Soon)</div>,
+      },
+      {
+        path: 'settings',
+        element: <SuspenseWrapper><Settings /></SuspenseWrapper>,
       },
     ],
   },
   {
-    path: '/app',
-    element: <MainLayout />,
+    path: '/teacher',
+    element: <TeacherDashboardLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: 'dashboard',
-        element: <div className="p-4 text-2xl">Student Dashboard (Coming Soon)</div>,
+        element: <SuspenseWrapper><TeacherDashboard /></SuspenseWrapper>,
+      },
+      {
+        path: 'students',
+        element: <SuspenseWrapper><TeacherClassOverview /></SuspenseWrapper>,
       },
       {
         path: 'lessons',
         element: <div className="p-4 text-2xl">Lessons Page (Coming Soon)</div>,
       },
       {
-        path: 'downloads',
-        element: <div className="p-4 text-2xl">Downloads Page (Coming Soon)</div>,
+        path: 'reports',
+        element: <SuspenseWrapper><TeacherReports /></SuspenseWrapper>,
       },
       {
-        path: 'progress',
-        element: <div className="p-4 text-2xl">Progress Page (Coming Soon)</div>,
-      },
-      {
-        path: 'profile',
-        element: <div className="p-4 text-2xl">Profile Page (Coming Soon)</div>,
+        path: 'settings',
+        element: <div className="p-4 text-2xl">Settings Page (Coming Soon)</div>,
       },
     ],
   },
   {
+    path: '/teacher/content',
+    element: <SuspenseWrapper><TeacherContent /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/parent',
+    element: <SuspenseWrapper><ParentDashboard /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/admin/dashboard',
+    element: <SuspenseWrapper><AdminDashboard /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
+  },
+  {
     path: '/view',
     element: <LessonViewerLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: ':id',
         element: <SuspenseWrapper><LessonViewer /></SuspenseWrapper>,
       },
     ],
+  },
+  {
+    path: '/quiz/:id',
+    element: <SuspenseWrapper><QuizAttempt /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/support',
+    element: <SuspenseWrapper><Support /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/forgot-password',
+    element: <SuspenseWrapper><ForgotPassword /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/forgot-password-confirmation',
+    element: <SuspenseWrapper><ForgotPasswordConfirmation /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/reset-password',
+    element: <SuspenseWrapper><SetNewPassword /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
   },
   {
     path: '*',

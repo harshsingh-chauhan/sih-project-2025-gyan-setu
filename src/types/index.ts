@@ -24,6 +24,7 @@ export interface Lesson {
   title: Record<SupportedLanguage, string>;
   content: Record<SupportedLanguage, string | object>; // Flexible for JSON or HTML
   media: MediaItem[];
+  thumbnail?: string;
   subject: string;
   grade: number; // Integer as per data-model.md
   downloadStatus: DownloadStatus;

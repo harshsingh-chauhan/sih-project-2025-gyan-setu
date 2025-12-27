@@ -72,17 +72,178 @@
   --color-background-light: #f6f8f6;
   --color-background-dark: #152012;
   --color-accent-dark: #2e4328;
+  --color-surface-dark: #1e2b1a;
+  --color-surface-light: #ffffff;
+  --color-primary: #53d22d;
+
+  /* Login Page Specific Colors */
+  --color-login-primary: #46ec13;
+  --color-login-bg-dark: #142210;
+  --color-login-surface-dark: #1f3319;
+  --color-login-border-dark: #3f6732;
+  --color-login-text-sec: #9fc992;
+
+  /* Sign Up Page Colors */
+  --color-signup-primary: #4cdf20;
+  --color-signup-primary-hover: #3bb316;
+  --color-signup-bg-light: #f6f8f6;
+  --color-signup-bg-dark: #152111;
+  --color-signup-surface-dark: #20321b;
+  --color-signup-border-dark: #406336;
+  --color-signup-text-sec: #a0c695;
+
+  /* Lesson List Page Colors */
+  --color-lesson-primary: #4cdf20;
+  --color-lesson-bg-dark: #152112;
+  --color-lesson-surface-dark: #20321b;
+  --color-lesson-text-sec: #a0c695;
+  --color-lesson-border: #2d4625;
+
+  /* Quiz Attempt Page Colors */
+  --color-quiz-primary: #4cdf20;
+  --color-quiz-primary-dark: #3ab018;
+  --color-quiz-bg-dark: #152111;
+  --color-quiz-surface-dark: #20321b;
+  --color-quiz-border-dark: #2d4625;
+
+  /* Student Progress Page Colors */
+  --color-progress-primary: #4cdf20;
+  --color-progress-bg-dark: #152111;
+  --color-progress-card-dark: #2d4625;
+  --color-progress-subtle-text: #a0c695;
+
+  /* Digital Literacy Page Colors */
+  --color-digilit-primary: #4cdf20;
+  --color-digilit-primary-dark: #3ab516;
+  --color-digilit-bg-dark: #152111;
+  --color-digilit-surface-dark: #1e2e1b;
+  --color-digilit-surface-highlight: #2d4625;
+  --color-digilit-text-sec: #a0c695;
+
+  /* Downloads Page Colors */
+  --color-downloads-primary: #4cdf20;
+  --color-downloads-bg-dark: #152112;
+  --color-downloads-surface-dark: #202f1d;
+  --color-downloads-surface-light: #2d4625;
+  --color-downloads-text-sec: #a0c695;
+
+  /* Teacher Content Page Colors */
+  --color-teacher-primary: #4cdf20;
+  --color-teacher-bg-dark: #152112;
+  --color-teacher-surface-dark: #1e2f1b;
+  --color-teacher-surface-border: #406336;
+  --color-teacher-surface-active: #2d4625;
+  --color-teacher-text-sec: #a0c695;
+
+  /* Teacher Class Overview Page Colors */
+  --color-overview-primary: #4cdf20;
+  --color-overview-primary-dark: #3ab018;
+  --color-overview-secondary: #a0c695;
+  --color-overview-danger: #fa4b38;
+  --color-overview-warning: #f59e0b;
+  --color-overview-bg-light: #f6f8f6;
+  --color-overview-bg-dark: #152111;
+  --color-overview-surface-dark: #2d4625;
+  --color-overview-surface-dark-hover: #36542c;
+
+  /* Teacher Reports Page Colors */
+  --color-reports-primary: #4cdf20;
+  --color-reports-primary-dark: #3ab516;
+  --color-reports-bg-dark: #152111;
+  --color-reports-surface-dark: #1e2d1a;
+  --color-reports-surface-light: #ffffff;
+  --color-reports-text-sec: #a0c695;
+
+  /* Parent View Page Colors */
+  --color-parent-primary: #4cdf20;
+  --color-parent-primary-dark: #3ab816;
+  --color-parent-bg-light: #f6f8f6;
+  --color-parent-bg-dark: #152111;
+  --color-parent-surface-light: #ffffff;
+  --color-parent-surface-dark: #1e2f1a;
+  --color-parent-text-main: #111b0e;
+  --color-parent-text-secondary: #4a5946;
+  --color-parent-border: #e2e8e0;
+
+  /* Admin Dashboard Page Colors */
+  --color-admin-primary: #4cdf20;
+  --color-admin-primary-dark: #3bb318;
+  --color-admin-bg-light: #f6f8f6;
+  --color-admin-bg-dark: #152111;
+  --color-admin-surface-dark: #1e2e1a;
+  --color-admin-surface-light: #ffffff;
+  --color-admin-border-dark: #406336;
+  --color-admin-border-light: #e5e7eb;
+  --color-admin-text-sec-dark: #a0c695;
+  --color-admin-text-sec-light: #6b7280;
+
+  /* Student Profile Page Colors */
+  --color-profile-primary: #4cdf20;
+  --color-profile-bg-dark: #152111;
+  --color-profile-surface-dark: #1f2b1b;
+  --color-profile-text-sec: #a0c695;
+  --color-profile-border-dark: #2d4625;
+
+  /* Settings Page Colors */
+  --color-settings-primary: #4cdf20;
+  --color-settings-bg-dark: #152112;
+  --color-settings-surface-dark: #20321b;
+  --color-settings-border-dark: #2d4625;
+  --color-settings-text-muted: #a0c695;
+
+  /* Support Page Colors */
+  --color-support-primary: #4cdf20;
+  --color-support-bg-light: #f6f8f6;
+  --color-support-bg-dark: #152111;
+  --color-support-surface-dark: #20321b;
+  --color-support-border-dark: #2d4625;
+  --color-support-text-sec: #a0c695;
+
+  /* Forgot Password Page Colors */
+  --color-forgot-primary: #4cdf20;
+  --color-forgot-bg-dark: #152111;
+  --color-forgot-card-dark: #1c2e18;
+  --color-forgot-input-dark: #24381f;
+  --color-forgot-border-dark: #36522e;
+
+  /* Set New Password Page Colors */
+  --color-setpwd-primary: #4cdf20;
+  --color-setpwd-bg-dark: #152111;
+  --color-setpwd-card-dark: #1a2617;
+  --color-setpwd-surface-dark: #20321b;
+  --color-setpwd-border-dark: #2f4526;
+  --color-setpwd-input-border: #406336;
+  --color-setpwd-text-sec: #a0c695;
+
+  --radius: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-2xl: 2.5rem;
+  --radius-3xl: 3rem;
 
   --breakpoint-xs: 375px;
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+  .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+  }
 }
 
 :root {
   font-family: var(--font-sans);
+}
+
+.font-lexend {
+  font-family: 'Lexend', var(--font-sans);
+}
+
+.font-noto {
+  font-family: 'Noto Sans', var(--font-sans);
 }
 
 h1, h2, h3, h4, .font-serif {
