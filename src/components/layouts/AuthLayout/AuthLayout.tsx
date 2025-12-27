@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../../store/useAuthStore';
-import { LanguageSwitcher } from '../../molecules/LanguageSwitcher/LanguageSwitcher';
 
 export const AuthLayout: React.FC = () => {
     const isAuthenticated = useAuthStore((state) => state.isAuthenticated);

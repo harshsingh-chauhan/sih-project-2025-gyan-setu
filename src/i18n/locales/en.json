@@ -4,30 +4,84 @@
     "signup": "Sign Up",
     "phone": "Phone Number",
     "pin": "4-Digit PIN",
-    "welcome": "Welcome back"
+    "welcome": "Welcome back",
+    "registerNow": "Register Now",
+    "dontHaveAccount": "Don't have an account?",
+    "startLearning": "Start Learning",
+    "loggingIn": "Signing in...",
+    "invalidCredentials": "Invalid credentials",
+    "loginFailed": "Login failed. Please try again.",
+    "usernameOrMobile": "Username or Mobile Number",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot Password?",
+    "welcomeBackTitle": "Welcome back",
+    "welcomeBackSubtitle": "Log in to continue your learning journey."
   },
   "common": {
     "download": "Download",
     "language": "Language",
     "punjabi": "Punjabi",
     "hindi": "Hindi",
-    "english": "English"
-  },
-  "progress": {
-    "title": "Your Progress",
-    "lessonsCompleted": "Lessons Completed",
-    "averageScore": "Average Score",
-    "recentActivity": "Recent Activity",
-    "completed": "Completed",
-    "inProgress": "In Progress",
-    "notStarted": "Not Started"
-  },
-  "sync": {
+    "english": "English",
+    "home": "Home",
+    "lessons": "Lessons",
+    "progress": "Progress",
+    "support": "Support",
+    "about": "About",
+    "features": "Features",
+    "contact": "Contact",
+    "learnMore": "Learn More",
+    "resume": "Resume",
+    "viewAll": "View All",
+    "search": "Search lessons...",
     "online": "Online",
-    "offline": "Offline",
-    "syncing": "Syncing progress...",
-    "synced": "Sync complete",
-    "failed": "Sync failed",
-    "retry": "Retry Sync"
+    "lastSynced": "Last synced: {{time}}",
+    "save": "Save",
+    "logout": "Log Out"
+  },
+  "landing": {
+    "heroTitle": "Bridge the Gap to Knowledge, Anywhere.",
+    "heroSubtitle": "Empowering students in Nabha with offline-first digital learning. Access world-class education without needing an active internet connection.",
+    "stats": {
+      "students": "Students Reached",
+      "villages": "Villages Covered",
+      "lessons": "Lessons Completed"
+    },
+    "features": {
+      "title": "Key Differentiators",
+      "subtitle": "Built for resilience and accessibility in low-connectivity areas, ensuring no student is left behind.",
+      "offlineTitle": "Offline-First",
+      "offlineDesc": "Download content once and learn forever without needing continuous data access.",
+      "multilingualTitle": "Multilingual Content",
+      "multilingualDesc": "Interactive lessons available in Punjabi and English to bridge language barriers.",
+      "digitalLiteracyTitle": "Digital Literacy",
+      "digitalLiteracyDesc": "Curriculum designed to help students master the basics of the digital world seamlessly."
+    },
+    "cta": {
+      "title": "Join GyaanSetu Today",
+      "subtitle": "Start your learning journey or support our mission to bring digital education to every village in Nabha.",
+      "partner": "Partner with Us"
+    },
+    "footer": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "rights": "All rights reserved."
+    }
+  },
+  "dashboard": {
+    "greeting": "Sat Sri Akal, Aman!",
+    "readyToLearn": "Ready to learn something new?",
+    "classInfo": "Class 8 - Roll No 12",
+    "continueLearning": "Continue Learning",
+    "subjectProgress": "Subject Performance",
+    "achievements": "Recent Badges",
+    "lessonsCompleted": "Lessons Completed",
+    "currentStreak": "Current Streak",
+    "gyaanPoints": "Gyaan Points",
+    "math": "Mathematics",
+    "science": "Science",
+    "english": "English",
+    "punjabi": "Punjabi"
   }
 }

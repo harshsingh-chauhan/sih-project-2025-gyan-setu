@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { LayoutDashboard, BookOpen, Download, GraduationCap, User } from 'lucide-react';
 
 export const SideBar: React.FC = () => {
+    const { t } = useTranslation();
     const location = useLocation();
 
     const menuItems = [
-        { name: 'Dashboard', path: '/app/dashboard', icon: LayoutDashboard },
-        { name: 'Lessons', path: '/app/lessons', icon: BookOpen },
+        { name: t('common.home'), path: '/app/dashboard', icon: LayoutDashboard },
+        { name: t('common.lessons'), path: '/app/lessons', icon: BookOpen },
         { name: 'Downloads', path: '/app/downloads', icon: Download },
-        { name: 'Progress', path: '/app/progress', icon: GraduationCap },
+        { name: t('common.progress'), path: '/app/progress', icon: GraduationCap },
         { name: 'Profile', path: '/app/profile', icon: User },
     ];
 
@@ -31,3 +33,4 @@ export const SideBar: React.FC = () => {
         </aside>
     );
 };
+

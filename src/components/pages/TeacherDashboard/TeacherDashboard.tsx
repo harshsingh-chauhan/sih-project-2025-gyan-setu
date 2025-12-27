@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const TeacherDashboard: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="p-6 md:p-10 flex flex-col gap-8 max-w-[1600px] mx-auto w-full">
       {/* Overview Stats Grid */}
@@ -11,7 +13,7 @@ export const TeacherDashboard: React.FC = () => {
             <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300">
               <span className="material-symbols-outlined">groups</span>
             </div>
-            <span className="text-xs font-bold px-2 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">+2 new</span>
+            <span className="text-xs font-bold px-2 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">+2 {t('progress.completed').toLowerCase()}</span>
           </div>
           <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Total Students</p>
           <p className="text-3xl font-bold text-slate-900 dark:text-white mt-1">42</p>
@@ -34,7 +36,7 @@ export const TeacherDashboard: React.FC = () => {
               <span className="material-symbols-outlined">menu_book</span>
             </div>
           </div>
-          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Lessons Completed</p>
+          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{t('dashboard.lessonsCompleted')}</p>
           <p className="text-3xl font-bold text-slate-900 dark:text-white mt-1">156</p>
         </div>
         {/* Stat 4 */}
@@ -45,7 +47,7 @@ export const TeacherDashboard: React.FC = () => {
             </div>
             <span className="text-xs font-bold px-2 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">High</span>
           </div>
-          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Avg Quiz Score</p>
+          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{t('progress.averageScore')}</p>
           <p className="text-3xl font-bold text-slate-900 dark:text-white mt-1">85%</p>
         </div>
       </section>
@@ -57,7 +59,7 @@ export const TeacherDashboard: React.FC = () => {
             <span className="material-symbols-outlined text-amber-500">warning</span>
             At-Risk Students Alert
           </h3>
-          <button className="text-sm font-bold text-primary hover:text-primary-dark hover:underline">View All</button>
+          <button className="text-sm font-bold text-primary hover:text-primary-dark hover:underline">{t('common.viewAll')}</button>
         </div>
         <div className="bg-white dark:bg-surface-dark rounded-2xl shadow-sm border border-gray-100 dark:border-[#2e4328] overflow-hidden">
           <div className="overflow-x-auto">
@@ -94,7 +96,7 @@ export const TeacherDashboard: React.FC = () => {
                   </td>
                   <td className="px-6 py-4 text-right">
                     <button className="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-600 text-xs font-bold text-slate-700 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
-                      Contact
+                      {t('common.contact')}
                     </button>
                   </td>
                 </tr>
@@ -164,7 +166,7 @@ export const TeacherDashboard: React.FC = () => {
               <p className="text-[#a2c398] text-sm max-w-md">Version 2.0 is now available for download. Includes offline-compatible video lessons.</p>
             </div>
             <button className="z-10 px-5 py-2.5 bg-white text-slate-900 text-sm font-bold rounded-full hover:bg-gray-100 transition-colors whitespace-nowrap">
-              Download Now
+              {t('common.download')} Now
             </button>
           </div>
         </section>
@@ -172,7 +174,7 @@ export const TeacherDashboard: React.FC = () => {
         {/* Recent Activity Timeline */}
         <section className="flex flex-col gap-4">
           <div className="flex items-center justify-between px-2">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white">Recent Activity</h3>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white">{t('progress.recentActivity')}</h3>
             <button className="text-primary hover:text-primary-dark transition-colors">
               <span className="material-symbols-outlined">refresh</span>
             </button>
@@ -226,8 +228,8 @@ export const TeacherDashboard: React.FC = () => {
       </div>
 
       <footer className="mt-8 text-center text-xs text-gray-500 dark:text-[#a2c398]/60 pb-8">
-        © 2023 GyaanSetu Platform. All rights reserved. <br/>
-        <span className="opacity-70">Designed for Nabha, Punjab. Version 1.4.2 (Offline Mode Enabled)</span>
+        © 2023 GyaanSetu Platform. {t('landing.footer.rights')} <br/>
+        <span className="opacity-70">Designed for Nabha, Punjab. Version 1.4.2 ({t('sync.offline')} Mode Enabled)</span>
       </footer>
     </div>
   );

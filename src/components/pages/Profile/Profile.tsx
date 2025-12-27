@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../../store/useAuthStore';
 
 export const Profile: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const logout = useAuthStore((state) => state.logout);
   const user = useAuthStore((state) => state.user);
@@ -28,10 +30,10 @@ export const Profile: React.FC = () => {
           {/* Desktop Nav */}
           <div className="hidden md:flex flex-1 justify-end gap-8">
             <nav className="flex items-center gap-9">
-              <Link className="text-sm font-medium leading-normal text-slate-600 hover:text-profile-primary dark:text-white dark:hover:text-profile-primary transition-colors" to="/app/dashboard">Home</Link>
-              <Link className="text-sm font-medium leading-normal text-slate-600 hover:text-profile-primary dark:text-white dark:hover:text-profile-primary transition-colors" to="/app/lessons">Lessons</Link>
+              <Link className="text-sm font-medium leading-normal text-slate-600 hover:text-profile-primary dark:text-white dark:hover:text-profile-primary transition-colors" to="/app/dashboard">{t('common.home')}</Link>
+              <Link className="text-sm font-medium leading-normal text-slate-600 hover:text-profile-primary dark:text-white dark:hover:text-profile-primary transition-colors" to="/app/lessons">{t('common.lessons')}</Link>
               <Link className="text-sm font-bold leading-normal text-profile-primary" to="/app/profile">My Profile</Link>
-              <Link className="text-sm font-medium leading-normal text-slate-600 hover:text-profile-primary dark:text-white dark:hover:text-profile-primary transition-colors" to="/app/progress">Progress</Link>
+              <Link className="text-sm font-medium leading-normal text-slate-600 hover:text-profile-primary dark:text-white dark:hover:text-profile-primary transition-colors" to="/app/progress">{t('common.progress')}</Link>
             </nav>
             <div className="flex items-center gap-4">
               <button className="flex size-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-profile-border-dark text-slate-900 dark:text-white hover:opacity-80 transition-opacity">
@@ -79,7 +81,7 @@ export const Profile: React.FC = () => {
                   </div>
                   <div className="flex flex-col justify-center gap-1">
                     <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">{user?.name || 'Rohan Singh'}</h2>
-                    <p className="text-slate-500 dark:text-profile-text-sec text-base">Class 8 - Section B</p>
+                    <p className="text-slate-500 dark:text-profile-text-sec text-base">{t('dashboard.classInfo')}</p>
                     <div className="inline-flex items-center justify-center sm:justify-start gap-1 mt-1">
                       <span className="material-symbols-outlined text-slate-400 dark:text-gray-500 text-sm">badge</span>
                       <span className="text-slate-400 dark:text-gray-500 text-sm font-mono">ID: {user?.phone || 'NAB-2023-089'}</span>
@@ -101,7 +103,7 @@ export const Profile: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">42</p>
-                  <p className="text-sm text-slate-500 dark:text-profile-text-sec">Lessons Completed</p>
+                  <p className="text-sm text-slate-500 dark:text-profile-text-sec">{t('dashboard.lessonsCompleted')}</p>
                 </div>
               </div>
               <div className="bg-orange-50 dark:bg-[#2d2215] border border-orange-100 dark:border-orange-900/30 rounded-xl p-5 flex items-center gap-4">
@@ -109,8 +111,8 @@ export const Profile: React.FC = () => {
                   <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>local_fire_department</span>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-slate-900 dark:text-white">7 Days</p>
-                  <p className="text-sm text-slate-500 dark:text-profile-text-sec">Current Streak</p>
+                  <p className="text-2xl font-bold text-slate-900 dark:text-white">7 {t('dashboard.currentStreak').split(' ')[1]}</p>
+                  <p className="text-sm text-slate-500 dark:text-profile-text-sec">{t('dashboard.currentStreak')}</p>
                 </div>
               </div>
               <div className="bg-blue-50 dark:bg-[#15232d] border border-blue-100 dark:border-blue-900/30 rounded-xl p-5 flex items-center gap-4">
@@ -130,16 +132,16 @@ export const Profile: React.FC = () => {
               <div className="flex flex-col gap-4">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 px-1">
                   <span className="material-symbols-outlined text-profile-primary">translate</span>
-                  Language Preference
+                  {t('common.language')} Preference
                 </h3>
                 <div className="bg-white dark:bg-profile-surface-dark rounded-xl p-6 shadow-sm border border-gray-100 dark:border-profile-border-dark flex flex-col gap-6">
                   <label className="flex flex-col gap-2">
                     <span className="text-slate-700 dark:text-white font-medium">Select Interface Language</span>
                     <div className="relative">
                       <select className="w-full appearance-none rounded-lg bg-gray-50 dark:bg-profile-bg-dark border border-gray-300 dark:border-profile-border-dark text-slate-900 dark:text-white p-4 pr-10 focus:outline-none focus:ring-2 focus:ring-profile-primary focus:border-transparent transition-all">
-                        <option value="pa">Punjabi (ਪੰਜਾਬੀ)</option>
-                        <option value="hi">Hindi (हिंदी)</option>
-                        <option value="en">English</option>
+                        <option value="pa">{t('common.punjabi')} (ਪੰਜਾਬੀ)</option>
+                        <option value="hi">{t('common.hindi')} (हिंदी)</option>
+                        <option value="en">{t('common.english')}</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 dark:text-profile-text-sec">
                         <span className="material-symbols-outlined">expand_more</span>
@@ -201,7 +203,7 @@ export const Profile: React.FC = () => {
                   className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 border border-red-200 dark:border-red-900/30 font-medium transition-colors"
                 >
                   <span className="material-symbols-outlined text-lg">logout</span>
-                  Log Out
+                  {t('common.logout')}
                 </button>
               </div>
             </div>
@@ -212,3 +214,4 @@ export const Profile: React.FC = () => {
     </div>
   );
 };
+

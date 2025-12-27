@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useMultilingual } from '../../../hooks/useMultilingual';
 import { db } from '../../../services/storage/dexie.db';
 import type { Lesson } from '../../../types';
@@ -7,25 +8,16 @@ import { useContentDownload } from '../../../hooks/useContentDownload';
 
 // Helper component to handle download logic which requires a non-null lesson
 const LessonDownloadAction: React.FC<{ lesson: Lesson; onUpdate: (l: Lesson) => void }> = ({ lesson, onUpdate }) => {
+    const { t } = useTranslation();
     const { isDownloading, progress, downloadLesson } = useContentDownload(lesson);
 
     const handleClick = async () => {
         if (lesson.downloadStatus === 'not_downloaded') {
             await downloadLesson();
-            // Refresh lesson state logic is partly handled by hook updating DB, 
-            // but parent might need to know to re-render if it depends on DB state not live query
-            // The hook updates DB. We might need to fetch again in parent or rely on live query.
-            // For simplicity here, we trigger a callback after a short delay or rely on the hook's effect?
-            // The hook doesn't return the updated lesson. 
-            // Let's just trust the UI updates via isDownloading state for now, 
-            // and maybe trigger a parent refresh if needed.
              const updated = await db.lessons.get(lesson.id);
              if (updated) onUpdate(updated);
         }
     };
-
-    // Watch for status changes in DB if needed, or just rely on local state
-    // For this MVP, we use the isDownloading state from hook to show progress.
 
     return (
         <button 
@@ -39,7 +31,7 @@ const LessonDownloadAction: React.FC<{ lesson: Lesson; onUpdate: (l: Lesson) => 
                 </div>
                 <div className="text-left">
                     <p className="text-sm font-bold text-[#111418] dark:text-white">
-                        {lesson.downloadStatus === 'downloaded' ? 'Downloaded' : 'Download for Offline'}
+                        {lesson.downloadStatus === 'downloaded' ? t('progress.completed') : t('common.download')}
                     </p>
                     <p className="text-xs text-gray-500">Video & Quiz (45MB)</p>
                 </div>
@@ -59,6 +51,7 @@ const LessonDownloadAction: React.FC<{ lesson: Lesson; onUpdate: (l: Lesson) => 
  * Matches the "GyaanSetu - Lesson Viewer" design.
  */
 export const LessonViewer: React.FC = () => {
+    const { t } = useTranslation();
     const { id } = useParams<{ id: string }>();
     const { getLocalized } = useMultilingual();
     
@@ -70,7 +63,6 @@ export const LessonViewer: React.FC = () => {
     const fetchLesson = async () => {
         if (!id) return;
         try {
-            // setLoading(true); // Don't set loading on refresh to avoid flicker
             const data = await db.lessons.get(id);
             if (data) {
                 setLesson(data);
@@ -158,7 +150,7 @@ export const LessonViewer: React.FC = () => {
                                         <div className="relative group/lang">
                                             <button className="flex items-center gap-1 hover:text-primary transition-colors px-2 py-1 rounded hover:bg-white/10">
                                                 <span className="material-symbols-outlined text-[20px]">closed_caption</span>
-                                                <span className="text-xs font-bold uppercase">Pbi</span>
+                                                <span className="text-xs font-bold uppercase">{t('common.language').substring(0, 3)}</span>
                                             </button>
                                         </div>
                                         <button className="hover:text-primary transition-colors">
@@ -183,7 +175,7 @@ export const LessonViewer: React.FC = () => {
                         onClick={() => setActiveTab('overview')}
                         className={`pb-3 border-b-2 font-medium text-sm transition-colors ${activeTab === 'overview' ? 'border-primary text-primary font-bold' : 'border-transparent text-gray-500 dark:text-[#a2c398] hover:text-primary'}`}
                     >
-                        Overview
+                        {t('common.about')}
                     </button>
                     <button 
                         onClick={() => setActiveTab('transcript')}
@@ -261,7 +253,7 @@ export const LessonViewer: React.FC = () => {
                         <div className="grid grid-cols-2 gap-3">
                             <button className="flex flex-col items-center justify-center gap-2 p-3 rounded-lg bg-primary hover:bg-primary/90 text-[#152012] font-bold transition-colors shadow-lg shadow-primary/20">
                                 <span className="material-symbols-outlined">check_circle</span>
-                                <span className="text-sm">Mark Complete</span>
+                                <span className="text-sm">{t('progress.completed')}</span>
                             </button>
                             <button className="flex flex-col items-center justify-center gap-2 p-3 rounded-lg bg-white dark:bg-[#253620] border border-gray-200 dark:border-[#3e5634] text-[#111418] dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-[#2e4328] transition-colors">
                                 <span className="material-symbols-outlined text-primary">psychology</span>
@@ -278,7 +270,7 @@ export const LessonViewer: React.FC = () => {
                             <span className="material-symbols-outlined text-primary">edit_note</span>
                             My Notes
                         </h3>
-                        <button className="text-xs font-bold text-primary hover:text-white transition-colors uppercase tracking-wider">Save</button>
+                        <button className="text-xs font-bold text-primary hover:text-white transition-colors uppercase tracking-wider">{t('common.save')}</button>
                     </div>
                     <textarea 
                         className="w-full flex-1 min-h-[150px] bg-gray-50 dark:bg-[#152012] border border-gray-200 dark:border-[#2e4328] rounded-lg p-4 text-sm text-[#111418] dark:text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none transition-all" 
@@ -299,3 +291,4 @@ export const LessonViewer: React.FC = () => {
         </>
     );
 };
+

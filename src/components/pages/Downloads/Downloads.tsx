@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const Downloads: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="bg-background-light dark:bg-downloads-bg-dark text-slate-900 dark:text-white font-lexend overflow-x-hidden min-h-screen flex flex-col">
       <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root">
@@ -18,10 +20,10 @@ export const Downloads: React.FC = () => {
                     <h2 className="text-white text-xl font-bold leading-tight tracking-[-0.015em]">GyaanSetu</h2>
                   </div>
                   <div className="hidden md:flex items-center gap-9">
-                    <Link className="text-white hover:text-downloads-primary transition-colors text-sm font-medium leading-normal" to="/app/dashboard">Home</Link>
-                    <Link className="text-white hover:text-downloads-primary transition-colors text-sm font-medium leading-normal" to="/app/lessons">Lessons</Link>
+                    <Link className="text-white hover:text-downloads-primary transition-colors text-sm font-medium leading-normal" to="/app/dashboard">{t('common.home')}</Link>
+                    <Link className="text-white hover:text-downloads-primary transition-colors text-sm font-medium leading-normal" to="/app/lessons">{t('common.lessons')}</Link>
                     <Link className="text-downloads-primary text-sm font-medium leading-normal" to="/app/downloads">My Downloads</Link>
-                    <Link className="text-white hover:text-downloads-primary transition-colors text-sm font-medium leading-normal" to="/app/profile">Profile</Link>
+                    <Link className="text-white hover:text-downloads-primary transition-colors text-sm font-medium leading-normal" to="/app/profile">{t('auth.signup').split(' ')[1]}</Link>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -31,7 +33,7 @@ export const Downloads: React.FC = () => {
                       <div className="text-downloads-text-sec flex border-none items-center justify-center pl-4 pr-2">
                         <span className="material-symbols-outlined text-[20px]">search</span>
                       </div>
-                      <input className="flex w-full min-w-0 flex-1 resize-none bg-transparent text-white focus:outline-none placeholder:text-downloads-text-sec px-2 text-sm font-normal leading-normal" placeholder="Search lessons..."/>
+                      <input className="flex w-full min-w-0 flex-1 resize-none bg-transparent text-white focus:outline-none placeholder:text-downloads-text-sec px-2 text-sm font-normal leading-normal" placeholder={t('common.search')}/>
                     </div>
                   </label>
                   {/* Profile Button */}
@@ -82,11 +84,11 @@ export const Downloads: React.FC = () => {
                     All
                   </button>
                   <button className="flex h-9 items-center justify-center px-4 rounded-full bg-white dark:bg-downloads-surface-light text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-[#3d5e32] border border-slate-200 dark:border-transparent text-sm font-medium transition-colors">
-                    Downloading
+                    {t('progress.inProgress')}
                     <span className="ml-2 bg-slate-200 dark:bg-downloads-bg-dark text-downloads-primary text-[10px] px-1.5 py-0.5 rounded-full">2</span>
                   </button>
                   <button className="flex h-9 items-center justify-center px-4 rounded-full bg-white dark:bg-downloads-surface-light text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-[#3d5e32] border border-slate-200 dark:border-transparent text-sm font-medium transition-colors">
-                    Completed
+                    {t('progress.completed')}
                   </button>
                   <button className="flex h-9 items-center justify-center px-4 rounded-full bg-white dark:bg-downloads-surface-light text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-[#3d5e32] border border-slate-200 dark:border-transparent text-sm font-medium transition-colors">
                     Failed
@@ -191,7 +193,7 @@ export const Downloads: React.FC = () => {
                       <div className="w-full h-full bg-cover bg-center grayscale opacity-60" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYmY07U1sYVoAsUovsuYWceV5YgyfWoda85Lli0sepv92Qsyix1sIMs3yn7ytEUF0kHphiOO4aH8dvFW97ixT_aUaC3JJUq_Hswcu2GZ6U4Dqr7k3Y5PFxDxWDxYhiMkHwiI45GdRA_K9Kmy6ggjfgESqMSKvG3pm-Kf39sbYMyCxKkLGGJ7Jl7Y8hrv8i2n4KgAqVUzs-BbctsJ4Suq2BbxUZBMASoAuvi-AHvUcuRbVFoGHYP9cosvRaPufJopc2BRIf5FAtNAk")' }}></div>
                     </div>
                     <div className="flex-1 w-full text-center sm:text-left">
-                      <h4 class="text-slate-900 dark:text-white font-medium">Solar System Basics</h4>
+                      <h4 className="text-slate-900 dark:text-white font-medium">Solar System Basics</h4>
                       <p className="text-red-500 dark:text-red-400 text-xs flex items-center justify-center sm:justify-start gap-1 mt-1">
                         <span className="material-symbols-outlined text-sm">error</span>
                         Download Failed - Insufficient Storage
@@ -272,3 +274,4 @@ export const Downloads: React.FC = () => {
     </div>
   );
 };
+

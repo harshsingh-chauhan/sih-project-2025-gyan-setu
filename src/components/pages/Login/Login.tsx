@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { authService } from '../../../services/api/auth.service';
 import { useAuthStore } from '../../../store/useAuthStore';
 
 export const Login: React.FC = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const login = useAuthStore((state) => state.login);
 
@@ -25,8 +27,8 @@ export const Login: React.FC = () => {
             navigate('/');
         } catch (err) {
             setError(err instanceof Error && err.message === 'UNAUTHORIZED' 
-                ? 'Invalid credentials' 
-                : 'Login failed. Please try again.');
+                ? t('auth.invalidCredentials') 
+                : t('auth.loginFailed'));
         } finally {
             setIsLoading(false);
         }
@@ -36,9 +38,9 @@ export const Login: React.FC = () => {
         <div className="w-full max-w-[480px] flex flex-col gap-6 md:gap-8 animate-in fade-in zoom-in duration-300">
             {/* Hero Text */}
             <div className="flex flex-col items-center text-center space-y-2">
-                <h1 className="text-white tracking-tight text-[32px] md:text-4xl font-bold leading-tight px-4">Welcome back</h1>
+                <h1 className="text-white tracking-tight text-[32px] md:text-4xl font-bold leading-tight px-4">{t('auth.welcomeBackTitle')}</h1>
                 <p className="text-login-text-sec text-base font-normal leading-normal px-4">
-                    Log in to continue your learning journey.
+                    {t('auth.welcomeBackSubtitle')}
                 </p>
             </div>
 
@@ -53,13 +55,13 @@ export const Login: React.FC = () => {
 
                     {/* Username Field */}
                     <div className="flex flex-col gap-2">
-                        <label className="text-white text-base font-medium leading-normal pl-1" htmlFor="username">Username or Mobile Number</label>
+                        <label className="text-white text-base font-medium leading-normal pl-1" htmlFor="username">{t('auth.usernameOrMobile')}</label>
                         <div className="relative flex items-center w-full">
                             <input 
                                 autoComplete="username" 
                                 className="w-full h-14 bg-[#152211] text-white placeholder:text-login-text-sec/70 border border-login-border-dark rounded-full px-6 pr-12 focus:outline-none focus:border-login-primary focus:ring-1 focus:ring-login-primary transition-all text-base" 
                                 id="username" 
-                                placeholder="Enter your username" 
+                                placeholder={t('auth.usernameOrMobile')} 
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
@@ -71,13 +73,13 @@ export const Login: React.FC = () => {
 
                     {/* Password Field */}
                     <div className="flex flex-col gap-2">
-                        <label className="text-white text-base font-medium leading-normal pl-1" htmlFor="password">Password</label>
+                        <label className="text-white text-base font-medium leading-normal pl-1" htmlFor="password">{t('auth.password')}</label>
                         <div className="relative flex items-center w-full">
                             <input 
                                 autoComplete="current-password" 
                                 className="w-full h-14 bg-[#152211] text-white placeholder:text-login-text-sec/70 border border-login-border-dark rounded-full px-6 pr-12 focus:outline-none focus:border-login-primary focus:ring-1 focus:ring-login-primary transition-all text-base" 
                                 id="password" 
-                                placeholder="Enter your password" 
+                                placeholder={t('auth.password')} 
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -94,9 +96,9 @@ export const Login: React.FC = () => {
                                 <input className="peer h-5 w-5 cursor-pointer appearance-none rounded-md border border-login-border-dark bg-[#152211] checked:bg-login-primary checked:border-login-primary transition-all" type="checkbox"/>
                                 <span className="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16px] text-black opacity-0 peer-checked:opacity-100 pointer-events-none font-bold">check</span>
                             </div>
-                            <span className="group-hover:text-login-primary transition-colors text-login-text-sec group-hover:text-white">Remember me</span>
+                            <span className="group-hover:text-login-primary transition-colors text-login-text-sec group-hover:text-white">{t('auth.rememberMe')}</span>
                         </label>
-                        <a className="text-login-primary font-bold hover:text-white transition-colors" href="#">Forgot Password?</a>
+                        <Link className="text-login-primary font-bold hover:text-white transition-colors" to="/forgot-password">{t('auth.forgotPassword')}</Link>
                     </div>
 
                     {/* Login Button */}
@@ -106,10 +108,10 @@ export const Login: React.FC = () => {
                         disabled={isLoading}
                     >
                         {isLoading ? (
-                            <span>Signing in...</span>
+                            <span>{t('auth.loggingIn')}</span>
                         ) : (
                             <>
-                                <span>Start Learning</span>
+                                <span>{t('auth.startLearning')}</span>
                                 <span className="material-symbols-outlined">arrow_forward</span>
                             </>
                         )}
@@ -120,8 +122,8 @@ export const Login: React.FC = () => {
             {/* Sign Up Footer */}
             <div className="text-center pb-6">
                 <p className="text-login-text-sec text-base">
-                    Don't have an account? 
-                    <Link className="text-login-primary font-bold hover:underline hover:text-white transition-colors ml-1" to="/signup">Register Now</Link>
+                    {t('auth.dontHaveAccount')} 
+                    <Link className="text-login-primary font-bold hover:underline hover:text-white transition-colors ml-1" to="/signup">{t('auth.registerNow')}</Link>
                 </p>
             </div>
         </div>

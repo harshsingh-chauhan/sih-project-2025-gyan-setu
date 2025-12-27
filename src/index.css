@@ -206,6 +206,15 @@
   --color-forgot-input-dark: #24381f;
   --color-forgot-border-dark: #36522e;
 
+  /* Set New Password Page Colors */
+  --color-setpwd-primary: #4cdf20;
+  --color-setpwd-bg-dark: #152111;
+  --color-setpwd-card-dark: #1a2617;
+  --color-setpwd-surface-dark: #20321b;
+  --color-setpwd-border-dark: #2f4526;
+  --color-setpwd-input-border: #406336;
+  --color-setpwd-text-sec: #a0c695;
+
   --radius: 1rem;
   --radius-lg: 1.5rem;
   --radius-xl: 2rem;

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const TeacherContent: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="bg-background-light dark:bg-teacher-bg-dark text-slate-900 dark:text-white font-lexend overflow-hidden flex h-screen w-full selection:bg-teacher-primary selection:text-teacher-bg-dark transition-colors duration-200">
       
@@ -23,11 +25,11 @@ export const TeacherContent: React.FC = () => {
           <nav className="flex flex-col gap-2">
             <Link to="/teacher/dashboard" className="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-teacher-surface-active transition-colors group">
               <span className="material-symbols-outlined text-teacher-text-sec group-hover:text-white">dashboard</span>
-              <p className="text-teacher-text-sec group-hover:text-white text-sm font-medium">Dashboard</p>
+              <p className="text-teacher-text-sec group-hover:text-white text-sm font-medium">{t('common.home')}</p>
             </Link>
             <Link to="/teacher/content" className="flex items-center gap-3 px-4 py-3 rounded-full bg-teacher-primary shadow-lg shadow-teacher-primary/20 text-teacher-bg-dark">
               <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>library_books</span>
-              <p className="text-teacher-bg-dark text-sm font-bold">Content</p>
+              <p className="text-teacher-bg-dark text-sm font-bold">{t('common.lessons')}</p>
             </Link>
             <Link to="/teacher/students" className="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-teacher-surface-active transition-colors group">
               <span className="material-symbols-outlined text-teacher-text-sec group-hover:text-white">groups</span>
@@ -46,7 +48,7 @@ export const TeacherContent: React.FC = () => {
           </Link>
           <button className="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full h-10 px-4 bg-teacher-surface-active hover:bg-teacher-surface-border transition-colors text-white text-sm font-bold mt-2">
             <span className="material-symbols-outlined text-[18px]">logout</span>
-            <span>Log Out</span>
+            <span>{t('common.logout')}</span>
           </button>
         </div>
       </aside>
@@ -144,7 +146,7 @@ export const TeacherContent: React.FC = () => {
                   <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-teacher-text-sec group-focus-within:text-teacher-primary transition-colors">search</span>
                   <input 
                     className="w-full bg-teacher-surface-dark border border-teacher-surface-border text-white rounded-full h-12 pl-12 pr-4 focus:outline-none focus:border-teacher-primary focus:ring-1 focus:ring-teacher-primary placeholder-teacher-text-sec/50 transition-all" 
-                    placeholder="Search files, quizzes..." 
+                    placeholder={t('common.search')} 
                     type="text"
                   />
                 </div>

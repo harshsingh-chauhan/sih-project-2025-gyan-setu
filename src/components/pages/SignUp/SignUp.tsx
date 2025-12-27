@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { authService } from '../../../services/api/auth.service';
 import { useAuthStore } from '../../../store/useAuthStore';
 
 export const SignUp: React.FC = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const login = useAuthStore((state) => state.login);
     
@@ -37,7 +39,7 @@ export const SignUp: React.FC = () => {
             login(response.user, response.token);
             navigate('/');
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'Registration failed');
+            setError(err instanceof Error ? err.message : t('auth.loginFailed'));
         } finally {
             setIsLoading(false);
         }
@@ -58,7 +60,7 @@ export const SignUp: React.FC = () => {
                         <span className="material-symbols-outlined">contrast</span>
                     </button>
                     <Link to="/login" className="hidden sm:flex h-10 px-5 items-center justify-center rounded-full border border-slate-300 dark:border-signup-border-dark text-sm font-bold hover:bg-slate-100 dark:hover:bg-[#20321b] transition-colors">
-                        Log In
+                        {t('auth.login')}
                     </Link>
                 </div>
             </header>
@@ -75,10 +77,10 @@ export const SignUp: React.FC = () => {
                                 <span>Offline Ready Platform</span>
                             </div>
                             <h1 className="text-5xl font-black leading-[1.1] tracking-tight text-slate-900 dark:text-white">
-                                Education for everyone, everywhere.
+                                {t('landing.features.subtitle')}
                             </h1>
                             <p className="text-xl text-slate-600 dark:text-signup-text-sec max-w-lg leading-relaxed">
-                                Access interactive lessons in Punjabi, Hindi, and English without needing an active internet connection.
+                                {t('landing.heroSubtitle')}
                             </p>
                         </div>
                         <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-signup-surface-dark group shadow-2xl">
@@ -108,7 +110,7 @@ export const SignUp: React.FC = () => {
                     <div className="w-full lg:w-[480px] shrink-0 mx-auto">
                         <div className="bg-white dark:bg-[#1a2b16] rounded-[2rem] p-6 sm:p-8 shadow-xl border border-slate-100 dark:border-[#2d4625]">
                             <div className="mb-8">
-                                <h2 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white mb-2">Create Account</h2>
+                                <h2 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white mb-2">{t('auth.signup')}</h2>
                                 <p className="text-slate-500 dark:text-signup-text-sec">Join GyaanSetu to start learning. <br/><span className="font-noto">ਖਾਤਾ ਬਣਾਓ</span></p>
                             </div>
                             
@@ -122,13 +124,13 @@ export const SignUp: React.FC = () => {
                                 {/* Language Selector */}
                                 <div className="space-y-3">
                                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">
-                                        Preferred Language <span className="text-signup-text-sec font-normal text-xs ml-1">(ਭਾਸ਼ਾ ਚੁਣੋ)</span>
+                                        {t('common.language')} <span className="text-signup-text-sec font-normal text-xs ml-1">(ਭਾਸ਼ਾ ਚੁਣੋ)</span>
                                     </label>
                                     <div className="grid grid-cols-3 gap-2">
                                         {[
-                                            { id: 'punjabi', label: 'Punjabi', sub: 'ਪੰਜਾਬੀ' },
-                                            { id: 'hindi', label: 'Hindi', sub: 'हिंदी' },
-                                            { id: 'english', label: 'English', sub: 'English' }
+                                            { id: 'punjabi', label: t('common.punjabi'), sub: 'ਪੰਜਾਬੀ' },
+                                            { id: 'hindi', label: t('common.hindi'), sub: 'हिंदी' },
+                                            { id: 'english', label: t('common.english'), sub: 'English' }
                                         ].map((lang) => (
                                             <label key={lang.id} className="cursor-pointer">
                                                 <input 
@@ -205,7 +207,7 @@ export const SignUp: React.FC = () => {
 
                                 {/* Username/Email */}
                                 <div className="space-y-1.5">
-                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-200" htmlFor="username">Username or Email</label>
+                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-200" htmlFor="username">{t('auth.usernameOrMobile')}</label>
                                     <div className="relative">
                                         <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-signup-text-sec">alternate_email</span>
                                         <input 
@@ -222,7 +224,7 @@ export const SignUp: React.FC = () => {
 
                                 {/* Password */}
                                 <div className="space-y-1.5">
-                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-200" htmlFor="password">Password</label>
+                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-200" htmlFor="password">{t('auth.password')}</label>
                                     <div className="relative group/pass">
                                         <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-signup-text-sec">lock</span>
                                         <input 
@@ -252,20 +254,20 @@ export const SignUp: React.FC = () => {
                                     disabled={isLoading}
                                 >
                                     {isLoading ? (
-                                        <span>Creating Account...</span>
+                                        <span>{t('auth.registerNow')}...</span>
                                     ) : (
                                         <>
-                                            <span>SIGN UP</span>
+                                            <span>{t('auth.signup').toUpperCase()}</span>
                                             <span className="material-symbols-outlined font-bold">arrow_forward</span>
-                                        </button>
+                                        </>
                                     )}
                                 </button>
 
                                 <div className="text-center pt-2">
                                     <p className="text-sm text-slate-500 dark:text-signup-text-sec">
-                                        Already have an account? 
+                                        {t('auth.dontHaveAccount')} 
                                         <Link to="/login" className="font-bold text-slate-900 dark:text-white hover:text-signup-primary dark:hover:text-signup-primary underline decoration-2 underline-offset-4 decoration-signup-primary/50 hover:decoration-signup-primary transition-all ml-1">
-                                            Log In
+                                            {t('auth.login')}
                                         </Link>
                                     </p>
                                 </div>

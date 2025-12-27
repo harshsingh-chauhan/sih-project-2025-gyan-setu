@@ -19,7 +19,11 @@ const LessonList = lazy(() => import('./components/pages/LessonList/LessonList')
 const TeacherDashboard = lazy(() => import('./components/pages/TeacherDashboard/TeacherDashboard').then(module => ({ default: module.TeacherDashboard })));
 const QuizAttempt = lazy(() => import('./components/pages/QuizAttempt/QuizAttempt').then(module => ({ default: module.QuizAttempt })));
 const Progress = lazy(() => import('./components/pages/Progress/Progress').then(module => ({ default: module.Progress })));
+const Downloads = lazy(() => import('./components/pages/Downloads/Downloads').then(module => ({ default: module.Downloads })));
+const DigitalLiteracy = lazy(() => import('./components/pages/DigitalLiteracy/DigitalLiteracy').then(module => ({ default: module.DigitalLiteracy })));
 const TeacherReports = lazy(() => import('./components/pages/TeacherReports/TeacherReports').then(module => ({ default: module.TeacherReports })));
+const TeacherClassOverview = lazy(() => import('./components/pages/TeacherClassOverview/TeacherClassOverview').then(module => ({ default: module.TeacherClassOverview })));
+const TeacherContent = lazy(() => import('./components/pages/TeacherContent/TeacherContent').then(module => ({ default: module.TeacherContent })));
 const ParentDashboard = lazy(() => import('./components/pages/ParentDashboard/ParentDashboard').then(module => ({ default: module.ParentDashboard })));
 const AdminDashboard = lazy(() => import('./components/pages/AdminDashboard/AdminDashboard').then(module => ({ default: module.AdminDashboard })));
 const Profile = lazy(() => import('./components/pages/Profile/Profile').then(module => ({ default: module.Profile })));
@@ -27,6 +31,7 @@ const Settings = lazy(() => import('./components/pages/Settings/Settings').then(
 const Support = lazy(() => import('./components/pages/Support/Support').then(module => ({ default: module.Support })));
 const ForgotPassword = lazy(() => import('./components/pages/ForgotPassword/ForgotPassword').then(module => ({ default: module.ForgotPassword })));
 const ForgotPasswordConfirmation = lazy(() => import('./components/pages/ForgotPassword/ForgotPasswordConfirmation').then(module => ({ default: module.ForgotPasswordConfirmation })));
+const SetNewPassword = lazy(() => import('./components/pages/ForgotPassword/SetNewPassword').then(module => ({ default: module.SetNewPassword })));
 
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<div className="h-screen w-full flex items-center justify-center"><Spinner /></div>}>
@@ -42,6 +47,7 @@ const router = createBrowserRouter([
   },
   {
     element: <AuthLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: 'login',
@@ -52,10 +58,12 @@ const router = createBrowserRouter([
   {
     path: 'signup',
     element: <SuspenseWrapper><SignUp /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/app',
     element: <StudentDashboardLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: 'dashboard',
@@ -98,6 +106,7 @@ const router = createBrowserRouter([
   {
     path: '/teacher',
     element: <TeacherDashboardLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: 'dashboard',
@@ -124,18 +133,22 @@ const router = createBrowserRouter([
   {
     path: '/teacher/content',
     element: <SuspenseWrapper><TeacherContent /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/parent',
     element: <SuspenseWrapper><ParentDashboard /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/admin/dashboard',
     element: <SuspenseWrapper><AdminDashboard /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/view',
     element: <LessonViewerLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: ':id',
@@ -146,18 +159,27 @@ const router = createBrowserRouter([
   {
     path: '/quiz/:id',
     element: <SuspenseWrapper><QuizAttempt /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/support',
     element: <SuspenseWrapper><Support /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/forgot-password',
     element: <SuspenseWrapper><ForgotPassword /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/forgot-password-confirmation',
     element: <SuspenseWrapper><ForgotPasswordConfirmation /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/reset-password',
+    element: <SuspenseWrapper><SetNewPassword /></SuspenseWrapper>,
+    errorElement: <ErrorPage />,
   },
   {
     path: '*',

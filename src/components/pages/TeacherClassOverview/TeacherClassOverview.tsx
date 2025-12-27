@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const TeacherClassOverview: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="bg-background-light dark:bg-overview-bg-dark font-lexend text-white overflow-x-hidden min-h-screen flex flex-col transition-colors duration-200">
       
@@ -17,7 +19,7 @@ export const TeacherClassOverview: React.FC = () => {
           <div className="flex items-center gap-6">
             <div className="hidden md:flex items-center gap-2 bg-overview-surface-dark px-3 py-1.5 rounded-full">
               <span className="size-2 rounded-full bg-overview-primary animate-pulse"></span>
-              <span className="text-xs font-medium text-overview-secondary">Online</span>
+              <span className="text-xs font-medium text-overview-secondary">{t('common.online')}</span>
             </div>
             <div 
               className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-overview-surface-dark" 
@@ -33,7 +35,7 @@ export const TeacherClassOverview: React.FC = () => {
         <nav className="flex flex-wrap gap-2 items-center mb-6 text-sm">
           <Link className="text-overview-secondary hover:text-overview-primary transition-colors flex items-center gap-1" to="/teacher/dashboard">
             <span className="material-symbols-outlined text-[18px]">dashboard</span>
-            Dashboard
+            {t('common.home')}
           </Link>
           <span className="material-symbols-outlined text-overview-secondary text-[16px]">chevron_right</span>
           <span className="text-white font-medium">Class 5A - Science</span>
@@ -48,7 +50,7 @@ export const TeacherClassOverview: React.FC = () => {
           <div className="flex items-center gap-3">
             <button className="hidden sm:flex h-10 px-6 cursor-pointer items-center justify-center rounded-full bg-overview-surface-dark text-white text-sm font-bold hover:bg-overview-surface-dark-hover transition-colors gap-2">
               <span className="material-symbols-outlined text-[20px]">download</span>
-              <span>Download Report</span>
+              <span>{t('common.download')} Report</span>
             </button>
             <button className="flex h-10 px-6 cursor-pointer items-center justify-center rounded-full bg-overview-primary text-black text-sm font-bold hover:bg-overview-primary-dark transition-colors shadow-[0_0_15px_rgba(76,223,32,0.3)] gap-2">
               <span className="material-symbols-outlined text-[20px]">add</span>
@@ -65,7 +67,7 @@ export const TeacherClassOverview: React.FC = () => {
               <div className="p-2 bg-overview-primary/10 rounded-full text-overview-primary">
                 <span className="material-symbols-outlined">analytics</span>
               </div>
-              <p className="text-overview-secondary text-sm font-medium uppercase tracking-wider">Avg Score</p>
+              <p className="text-overview-secondary text-sm font-medium uppercase tracking-wider">{t('progress.averageScore')}</p>
             </div>
             <div className="flex items-end gap-3">
               <p className="text-white text-3xl font-bold leading-none">78%</p>
@@ -126,11 +128,11 @@ export const TeacherClassOverview: React.FC = () => {
             <button className="whitespace-nowrap flex items-center gap-2 px-4 py-2.5 rounded-full bg-overview-primary text-black text-sm font-bold">
               All Students
             </button>
-            <button className="whitespace-nowrap flex items-center gap-2 px-4 py-2.5 rounded-full bg-overview-surface-dark text-overview-secondary hover:text-white hover:bg-overview-surface-dark-hover transition-colors text-sm font-medium border border-transparent hover:border-overview-surface-dark-hover">
+            <button className="whitespace-nowrap flex items-center gap-2 px-4 py-2.5 rounded-full bg-overview-surface-dark text-overview-secondary hover:text-white hover:bg-overview-surface-dark-hover transition-colors text-sm font-medium border border-transparent hover:border-surface-dark-hover">
               At Risk
               <span className="bg-overview-danger text-white text-[10px] px-1.5 py-0.5 rounded-full leading-none">4</span>
             </button>
-            <button className="whitespace-nowrap flex items-center gap-2 px-4 py-2.5 rounded-full bg-overview-surface-dark text-overview-secondary hover:text-white hover:bg-overview-surface-dark-hover transition-colors text-sm font-medium border border-transparent hover:border-overview-surface-dark-hover">
+            <button className="whitespace-nowrap flex items-center gap-2 px-4 py-2.5 rounded-full bg-overview-surface-dark text-overview-secondary hover:text-white hover:bg-overview-surface-dark-hover transition-colors text-sm font-medium border border-transparent hover:border-surface-dark-hover">
               Excelling
             </button>
             <div className="h-6 w-px bg-overview-surface-dark mx-1 hidden lg:block"></div>
@@ -149,8 +151,8 @@ export const TeacherClassOverview: React.FC = () => {
                 <tr className="bg-overview-surface-dark border-b border-[#36542c]">
                   <th className="py-4 px-6 text-sm font-semibold text-overview-secondary uppercase tracking-wider w-[250px]">Student</th>
                   <th className="py-4 px-6 text-sm font-semibold text-overview-secondary uppercase tracking-wider w-[120px]">Roll ID</th>
-                  <th className="py-4 px-6 text-sm font-semibold text-overview-secondary uppercase tracking-wider w-[200px]">Progress</th>
-                  <th className="py-4 px-6 text-sm font-semibold text-overview-secondary uppercase tracking-wider w-[150px]">Avg Score</th>
+                  <th className="py-4 px-6 text-sm font-semibold text-overview-secondary uppercase tracking-wider w-[200px]">{t('common.progress')}</th>
+                  <th className="py-4 px-6 text-sm font-semibold text-overview-secondary uppercase tracking-wider w-[150px]">{t('progress.averageScore')}</th>
                   <th className="py-4 px-6 text-sm font-semibold text-overview-secondary uppercase tracking-wider w-[150px]">Last Active</th>
                   <th className="py-4 px-6 text-sm font-semibold text-overview-secondary uppercase tracking-wider text-right w-[100px]">Actions</th>
                 </tr>
@@ -306,7 +308,7 @@ export const TeacherClassOverview: React.FC = () => {
                   </td>
                   <td className="py-4 px-6 text-overview-secondary text-sm">3 hours ago</td>
                   <td className="py-4 px-6 text-right">
-                    <button className="text-overview-secondary hover:text-white p-2 rounded-full hover:bg-overview-surface-dark transition-colors">
+                    <button className="text-overview-secondary hover:text-white p-2 rounded-full hover:bg-surface-dark transition-colors">
                       <span className="material-symbols-outlined">more_vert</span>
                     </button>
                   </td>
@@ -330,7 +332,7 @@ export const TeacherClassOverview: React.FC = () => {
                     <div className="flex flex-col gap-1.5">
                       <div className="flex justify-between text-xs mb-0.5">
                         <span className="text-white">8/20 Lessons</span>
-                        <span className="text-overview-warning">40%</span>
+                        <span className="text-overview-warning">{t('progress.inProgress')}</span>
                       </div>
                       <div className="w-full bg-overview-bg-dark rounded-full h-2">
                         <div className="bg-overview-warning h-2 rounded-full" style={{ width: '40%' }}></div>

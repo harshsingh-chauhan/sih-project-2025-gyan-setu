@@ -1,27 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const LessonList: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col w-full h-full bg-background-light dark:bg-lesson-bg-dark text-slate-900 dark:text-white font-lexend p-4 md:p-6 lg:p-8">
       <div className="layout-content-container flex flex-col max-w-[1200px] w-full mx-auto flex-1">
         
         {/* Page Heading & Greeting */}
         <div className="flex flex-col gap-1 py-6">
-          <h1 className="text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] text-slate-900 dark:text-white">Sat Sri Akal, Aman!</h1>
-          <p className="text-slate-600 dark:text-lesson-text-sec text-base font-normal leading-normal">Ready to continue your learning journey today?</p>
+          <h1 className="text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] text-slate-900 dark:text-white">{t('dashboard.greeting')}</h1>
+          <p className="text-slate-600 dark:text-lesson-text-sec text-base font-normal leading-normal">{t('dashboard.readyToLearn')}</p>
         </div>
 
         {/* Continue Learning Section (Horizontal Card) */}
         <section className="mb-10">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white">Continue Learning</h3>
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t('dashboard.continueLearning')}</h3>
           </div>
           <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 rounded-xl bg-white dark:bg-lesson-surface-dark p-4 shadow-lg border border-slate-200 dark:border-lesson-border">
             <div className="flex flex-[2_2_0px] flex-col justify-center gap-4">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded text-xs font-bold bg-slate-100 dark:bg-lesson-border text-lesson-primary">Mathematics</span>
+                  <span className="px-2 py-0.5 rounded text-xs font-bold bg-slate-100 dark:bg-lesson-border text-lesson-primary">{t('dashboard.math')}</span>
                   <span className="text-slate-400 dark:text-lesson-text-sec text-xs">•</span>
                   <span className="text-slate-500 dark:text-lesson-text-sec text-xs font-medium">15 min remaining</span>
                 </div>
@@ -29,7 +31,7 @@ export const LessonList: React.FC = () => {
                 {/* Progress Bar */}
                 <div className="flex flex-col gap-2 mt-2">
                   <div className="flex justify-between text-xs text-slate-500 dark:text-lesson-text-sec">
-                    <span>Progress</span>
+                    <span>{t('progress.title').split(' ')[1]}</span>
                     <span>50%</span>
                   </div>
                   <div className="rounded-full bg-slate-200 dark:bg-[#406336] h-2 w-full max-w-md">
@@ -40,7 +42,7 @@ export const LessonList: React.FC = () => {
               <div className="pt-2">
                 <Link to="/view/1" className="flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-lesson-primary text-black hover:bg-[#3ec01a] transition-colors gap-2 text-sm font-bold w-fit shadow-[0_0_15px_rgba(76,223,32,0.3)]">
                   <span className="material-symbols-outlined text-[20px]">play_arrow</span>
-                  <span>Resume Lesson</span>
+                  <span>{t('common.resume')} {t('common.lessons').toLowerCase().slice(0, -1)}</span>
                 </Link>
               </div>
             </div>
@@ -61,7 +63,7 @@ export const LessonList: React.FC = () => {
               </div>
               <input 
                 className="block w-full p-4 pl-12 text-sm text-slate-900 dark:text-white border border-slate-200 dark:border-lesson-border rounded-full bg-white dark:bg-lesson-surface-dark placeholder-slate-400 dark:placeholder-lesson-text-sec focus:ring-lesson-primary focus:border-lesson-primary outline-none" 
-                placeholder="Search for lessons, topics, or subjects..." 
+                placeholder={t('common.search')} 
                 type="text"
               />
               <div className="absolute inset-y-0 right-2 flex items-center">
@@ -75,10 +77,10 @@ export const LessonList: React.FC = () => {
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex gap-2 overflow-x-auto hide-scrollbar pb-1 max-w-full">
                 <button className="whitespace-nowrap rounded-full bg-lesson-primary text-black px-4 py-2 text-sm font-bold">All</button>
-                <button className="whitespace-nowrap rounded-full bg-white dark:bg-lesson-border text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-[#3e5f33] border border-slate-200 dark:border-transparent hover:border-lesson-primary/50 transition-all px-4 py-2 text-sm font-medium">Mathematics</button>
-                <button className="whitespace-nowrap rounded-full bg-white dark:bg-lesson-border text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-[#3e5f33] border border-slate-200 dark:border-transparent hover:border-lesson-primary/50 transition-all px-4 py-2 text-sm font-medium">Science</button>
+                <button className="whitespace-nowrap rounded-full bg-white dark:bg-lesson-border text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-[#3e5f33] border border-slate-200 dark:border-transparent hover:border-lesson-primary/50 transition-all px-4 py-2 text-sm font-medium">{t('dashboard.math')}</button>
+                <button className="whitespace-nowrap rounded-full bg-white dark:bg-lesson-border text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-[#3e5f33] border border-slate-200 dark:border-transparent hover:border-lesson-primary/50 transition-all px-4 py-2 text-sm font-medium">{t('dashboard.science')}</button>
                 <button className="whitespace-nowrap rounded-full bg-white dark:bg-lesson-border text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-[#3e5f33] border border-slate-200 dark:border-transparent hover:border-lesson-primary/50 transition-all px-4 py-2 text-sm font-medium">Social Studies</button>
-                <button className="whitespace-nowrap rounded-full bg-white dark:bg-lesson-border text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-[#3e5f33] border border-slate-200 dark:border-transparent hover:border-lesson-primary/50 transition-all px-4 py-2 text-sm font-medium">Digital Literacy</button>
+                <button className="whitespace-nowrap rounded-full bg-white dark:bg-lesson-border text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-[#3e5f33] border border-slate-200 dark:border-transparent hover:border-lesson-primary/50 transition-all px-4 py-2 text-sm font-medium">{t('landing.features.digitalLiteracyTitle')}</button>
                 <button className="whitespace-nowrap rounded-full bg-white dark:bg-lesson-border text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-[#3e5f33] border border-slate-200 dark:border-transparent hover:border-lesson-primary/50 transition-all px-4 py-2 text-sm font-medium">Languages</button>
               </div>
               <div className="hidden md:flex items-center gap-2">
@@ -111,7 +113,7 @@ export const LessonList: React.FC = () => {
             </div>
             <div className="p-5 flex flex-col gap-3 flex-1">
               <div className="flex items-center justify-between">
-                <span className="text-lesson-text-sec text-xs font-bold uppercase tracking-wider">Science</span>
+                <span className="text-lesson-text-sec text-xs font-bold uppercase tracking-wider">{t('dashboard.science')}</span>
                 <div className="flex items-center gap-1 text-slate-500 dark:text-lesson-text-sec text-xs">
                   <span className="material-symbols-outlined text-[14px]">schedule</span>
                   <span>25 min</span>
@@ -145,7 +147,7 @@ export const LessonList: React.FC = () => {
             </div>
             <div className="p-5 flex flex-col gap-3 flex-1">
               <div className="flex items-center justify-between">
-                <span className="text-lesson-text-sec text-xs font-bold uppercase tracking-wider">Digital Literacy</span>
+                <span className="text-lesson-text-sec text-xs font-bold uppercase tracking-wider">{t('landing.features.digitalLiteracyTitle')}</span>
                 <div className="flex items-center gap-1 text-slate-500 dark:text-lesson-text-sec text-xs">
                   <span className="material-symbols-outlined text-[14px]">schedule</span>
                   <span>10 min</span>
@@ -156,7 +158,7 @@ export const LessonList: React.FC = () => {
               <div className="mt-auto pt-4 flex items-center justify-between border-t border-slate-200 dark:border-lesson-border">
                 <span className="text-lesson-primary text-sm font-bold flex items-center gap-1">
                   <span className="material-symbols-outlined text-[18px]">trophy</span>
-                  Completed
+                  {t('progress.completed')}
                 </span>
                 <button className="text-slate-500 dark:text-lesson-text-sec hover:text-slate-900 dark:hover:text-white text-sm font-medium">Review</button>
               </div>
@@ -172,7 +174,7 @@ export const LessonList: React.FC = () => {
               <div className="absolute bottom-3 left-3">
                 <span className="flex items-center gap-1 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-2 py-1 rounded-lg border border-white/10">
                   <span className="material-symbols-outlined text-[14px] text-lesson-text-sec">cloud_off</span>
-                  Download
+                  {t('common.download')}
                 </span>
               </div>
             </div>
@@ -207,7 +209,7 @@ export const LessonList: React.FC = () => {
             </div>
             <div className="p-5 flex flex-col gap-3 flex-1">
               <div className="flex items-center justify-between">
-                <span className="text-lesson-text-sec text-xs font-bold uppercase tracking-wider">Language</span>
+                <span className="text-lesson-text-sec text-xs font-bold uppercase tracking-wider">{t('dashboard.punjabi')}</span>
                 <div className="flex items-center gap-1 text-slate-500 dark:text-lesson-text-sec text-xs">
                   <span className="material-symbols-outlined text-[14px]">schedule</span>
                   <span>20 min</span>
@@ -239,7 +241,7 @@ export const LessonList: React.FC = () => {
             </div>
             <div className="p-5 flex flex-col gap-3 flex-1">
               <div className="flex items-center justify-between">
-                <span className="text-lesson-text-sec text-xs font-bold uppercase tracking-wider">Mathematics</span>
+                <span className="text-lesson-text-sec text-xs font-bold uppercase tracking-wider">{t('dashboard.math')}</span>
                 <div className="flex items-center gap-1 text-slate-500 dark:text-lesson-text-sec text-xs">
                   <span className="material-symbols-outlined text-[14px]">schedule</span>
                   <span>45 min</span>
@@ -252,7 +254,7 @@ export const LessonList: React.FC = () => {
                   <span className="material-symbols-outlined block">bookmark_border</span>
                 </button>
                 <div className="flex items-center gap-2 rounded-full bg-lesson-primary text-black px-4 py-2 text-sm font-bold hover:bg-[#3ec01a] transition-colors">
-                  Resume
+                  {t('common.resume')}
                   <span className="material-symbols-outlined text-[18px]">play_arrow</span>
                 </div>
               </div>
@@ -268,7 +270,7 @@ export const LessonList: React.FC = () => {
             </div>
             <div className="p-5 flex flex-col gap-3 flex-1">
               <div className="flex items-center justify-between">
-                <span className="text-lesson-text-sec text-xs font-bold uppercase tracking-wider">Science</span>
+                <span className="text-lesson-text-sec text-xs font-bold uppercase tracking-wider">{t('dashboard.science')}</span>
                 <div className="flex items-center gap-1 text-slate-500 dark:text-lesson-text-sec text-xs">
                   <span className="material-symbols-outlined text-[14px]">schedule</span>
                   <span>35 min</span>

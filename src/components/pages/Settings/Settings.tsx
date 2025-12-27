@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../../store/useAuthStore';
 
 export const Settings: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const logout = useAuthStore((state) => state.logout);
   const user = useAuthStore((state) => state.user);
@@ -43,15 +45,15 @@ export const Settings: React.FC = () => {
             <nav className="flex flex-col gap-2">
               <Link to="/app/dashboard" className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-settings-surface-dark transition-colors group">
                 <span className="material-symbols-outlined text-settings-text-muted group-hover:text-white">dashboard</span>
-                <p className="text-settings-text-muted group-hover:text-white text-sm font-medium">Dashboard</p>
+                <p className="text-settings-text-muted group-hover:text-white text-sm font-medium">{t('common.home')}</p>
               </Link>
               <Link to="/app/lessons" className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-settings-surface-dark transition-colors group">
                 <span className="material-symbols-outlined text-settings-text-muted group-hover:text-white">book_2</span>
-                <p className="text-settings-text-muted group-hover:text-white text-sm font-medium">Lessons</p>
+                <p className="text-settings-text-muted group-hover:text-white text-sm font-medium">{t('common.lessons')}</p>
               </Link>
               <Link to="/app/progress" className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-settings-surface-dark transition-colors group">
                 <span className="material-symbols-outlined text-settings-text-muted group-hover:text-white">bar_chart</span>
-                <p className="text-settings-text-muted group-hover:text-white text-sm font-medium">Progress</p>
+                <p className="text-settings-text-muted group-hover:text-white text-sm font-medium">{t('common.progress')}</p>
               </Link>
               <Link to="/app/settings" className="flex items-center gap-3 px-3 py-3 rounded-lg bg-settings-surface-dark border border-settings-border-dark">
                 <span className="material-symbols-outlined text-settings-primary" style={{ fontVariationSettings: "'FILL' 1" }}>settings</span>
@@ -59,12 +61,21 @@ export const Settings: React.FC = () => {
               </Link>
             </nav>
           </div>
-          {/* Offline Indicator */}
-          <div className="mt-auto px-2">
-            <div className="flex items-center gap-2 text-xs text-settings-text-muted bg-[#1a2b16] py-2 px-3 rounded-lg">
-              <span className="material-symbols-outlined text-[16px] text-settings-primary">wifi</span>
-              <span>Online • Last synced 2m ago</span>
+          {/* Offline Indicator & Logout */}
+          <div className="mt-auto flex flex-col gap-4">
+            <div className="px-2">
+              <div className="flex items-center gap-2 text-xs text-settings-text-muted bg-[#1a2b16] py-2 px-3 rounded-lg">
+                <span className="material-symbols-outlined text-[16px] text-settings-primary">wifi</span>
+                <span>{t('common.online')} • Last synced 2m ago</span>
+              </div>
             </div>
+            <button 
+              onClick={handleLogout}
+              className="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full h-10 px-4 bg-settings-surface-dark hover:bg-settings-border-dark transition-colors text-white text-sm font-bold"
+            >
+              <span className="material-symbols-outlined text-[18px]">logout</span>
+              <span>{t('common.logout')}</span>
+            </button>
           </div>
         </div>
       </aside>
@@ -107,12 +118,12 @@ export const Settings: React.FC = () => {
                 {/* Language & Visibility */}
                 <div className="flex flex-col sm:flex-row gap-6">
                   <label className="flex flex-col w-full sm:w-1/2 gap-2">
-                    <span className="text-white text-sm font-medium">Language Preference</span>
+                    <span className="text-white text-sm font-medium">{t('common.language')} Preference</span>
                     <div className="relative">
                       <select className="appearance-none w-full bg-settings-bg-dark border border-settings-border-dark text-white rounded-lg h-12 px-4 focus:outline-none focus:border-settings-primary focus:ring-1 focus:ring-settings-primary cursor-pointer transition-all">
-                        <option value="en">English</option>
-                        <option defaultValue="pa">Punjabi (ਪੰਜਾਬੀ)</option>
-                        <option value="hi">Hindi (हिंदी)</option>
+                        <option value="en">{t('common.english')}</option>
+                        <option value="pa">{t('common.punjabi')} (ਪੰਜਾਬੀ)</option>
+                        <option value="hi">{t('common.hindi')} (हिंदी)</option>
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-settings-text-muted">
                         <span className="material-symbols-outlined">expand_more</span>
@@ -125,7 +136,7 @@ export const Settings: React.FC = () => {
                     <div className="relative">
                       <select className="appearance-none w-full bg-settings-bg-dark border border-settings-border-dark text-white rounded-lg h-12 px-4 focus:outline-none focus:border-settings-primary focus:ring-1 focus:ring-settings-primary cursor-pointer transition-all">
                         <option value="public">Everyone</option>
-                        <option defaultValue="classmates">Classmates Only</option>
+                        <option value="classmates">Classmates Only</option>
                         <option value="private">Private</option>
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-settings-text-muted">
@@ -249,7 +260,7 @@ export const Settings: React.FC = () => {
                     </div>
                     <button className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[#2d4625] hover:bg-[#3a5a30] text-white text-sm font-bold transition-colors border border-transparent hover:border-settings-primary/30">
                       <span className="material-symbols-outlined text-[20px]">download</span>
-                      Download My Data
+                      {t('common.download')} My Data
                     </button>
                   </div>
                 </div>
@@ -258,12 +269,12 @@ export const Settings: React.FC = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-4 pb-8">
-              <button className="px-6 py-3 rounded-lg border border-settings-border-dark text-white text-sm font-bold hover:bg-settings-surface-dark transition-colors">
+              <button className="px-6 py-3 rounded-lg border border-settings-border-dark text-white text-sm font-bold hover:bg-surface-dark transition-colors">
                 Discard Changes
               </button>
               <button className="px-6 py-3 rounded-lg bg-settings-primary hover:bg-[#3ec01a] text-black text-sm font-bold shadow-lg shadow-settings-primary/20 transition-all flex items-center justify-center gap-2 active:scale-95">
                 <span className="material-symbols-outlined text-[20px]">save</span>
-                Save Preferences
+                {t('common.save')} Preferences
               </button>
             </div>
           </div>
@@ -272,3 +283,4 @@ export const Settings: React.FC = () => {
     </div>
   );
 };
+

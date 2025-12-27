@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const DigitalLiteracy: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="bg-background-light dark:bg-digilit-bg-dark text-slate-900 dark:text-white font-lexend antialiased overflow-hidden flex h-screen w-full transition-colors duration-200">
       
@@ -17,14 +19,14 @@ export const DigitalLiteracy: React.FC = () => {
               ></div>
               <div className="flex flex-col">
                 <h1 className="text-white text-xl font-bold tracking-tight">GyaanSetu</h1>
-                <p className="text-digilit-text-sec text-xs font-medium">Student Portal</p>
+                <p className="text-digilit-text-sec text-xs font-medium">{t('auth.signup').split(' ')[1]} Portal</p>
               </div>
             </div>
             {/* Navigation */}
             <nav className="flex flex-col gap-2">
               <Link to="/app/dashboard" className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-digilit-surface-highlight text-digilit-text-sec hover:text-white transition-colors group">
                 <span className="material-symbols-outlined group-hover:scale-110 transition-transform">dashboard</span>
-                <span className="text-sm font-medium">Dashboard</span>
+                <span className="text-sm font-medium">{t('common.home')}</span>
               </Link>
               <Link to="/app/modules" className="flex items-center gap-3 px-4 py-3 rounded-xl bg-digilit-primary text-digilit-bg-dark shadow-md shadow-digilit-primary/20 transition-colors">
                 <span className="material-symbols-outlined">menu_book</span>
@@ -40,7 +42,7 @@ export const DigitalLiteracy: React.FC = () => {
               </Link>
               <Link to="/app/settings" className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-digilit-surface-highlight text-digilit-text-sec hover:text-white transition-colors group">
                 <span className="material-symbols-outlined group-hover:scale-110 transition-transform">settings</span>
-                <span className="text-sm font-medium">Settings</span>
+                <span className="text-sm font-medium">{t('common.home')}</span>
               </Link>
             </nav>
           </div>
@@ -73,13 +75,13 @@ export const DigitalLiteracy: React.FC = () => {
             <span className="font-bold text-lg">GyaanSetu</span>
           </div>
           <div className="hidden lg:flex items-center gap-2">
-            <h2 className="text-white text-lg font-bold">Digital Literacy</h2>
+            <h2 className="text-white text-lg font-bold">{t('landing.features.digitalLiteracyTitle')}</h2>
           </div>
           <div className="flex items-center gap-4">
             {/* Language Toggle */}
             <button className="hidden sm:flex items-center gap-2 bg-digilit-surface-highlight hover:bg-[#36522d] px-3 py-1.5 rounded-full text-white text-sm font-bold transition-colors border border-transparent hover:border-digilit-primary/50">
               <span className="material-symbols-outlined text-[18px]">translate</span>
-              <span>EN</span>
+              <span>{t('common.language').substring(0, 2).toUpperCase()}</span>
             </button>
             <div className="h-6 w-px bg-digilit-surface-highlight mx-1"></div>
             <button className="relative text-digilit-text-sec hover:text-white transition-colors p-1">
@@ -101,17 +103,17 @@ export const DigitalLiteracy: React.FC = () => {
             {/* Page Heading & Stats Combined */}
             <div className="flex flex-col xl:flex-row gap-6 justify-between items-start xl:items-end">
               <div className="flex flex-col gap-2 max-w-2xl">
-                <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">Digital Literacy Modules</h1>
-                <p className="text-digilit-text-sec text-base md:text-lg">Master essential computer skills and earn your certification. Your gateway to the digital world.</p>
+                <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">{t('landing.features.digitalLiteracyTitle')}</h1>
+                <p className="text-digilit-text-sec text-base md:text-lg">{t('landing.features.digitalLiteracyDesc')}</p>
               </div>
               {/* Stats Grid */}
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3 w-full xl:w-auto">
                 <div className="flex flex-col gap-1 p-4 rounded-xl bg-digilit-surface-dark border border-digilit-surface-highlight">
-                  <span className="text-digilit-text-sec text-xs uppercase tracking-wider font-semibold">Completed</span>
+                  <span className="text-digilit-text-sec text-xs uppercase tracking-wider font-semibold">{t('progress.completed')}</span>
                   <span className="text-white text-2xl font-bold">1</span>
                 </div>
                 <div className="flex flex-col gap-1 p-4 rounded-xl bg-digilit-surface-dark border border-digilit-surface-highlight">
-                  <span className="text-digilit-text-sec text-xs uppercase tracking-wider font-semibold">In Progress</span>
+                  <span className="text-digilit-text-sec text-xs uppercase tracking-wider font-semibold">{t('progress.inProgress')}</span>
                   <span className="text-white text-2xl font-bold text-digilit-primary">2</span>
                 </div>
                 <div className="col-span-2 md:col-span-1 flex flex-col gap-1 p-4 rounded-xl bg-digilit-surface-dark border border-digilit-surface-highlight">
@@ -129,15 +131,15 @@ export const DigitalLiteracy: React.FC = () => {
                 </div>
                 <input 
                   className="block w-full pl-12 pr-4 py-3.5 bg-digilit-surface-dark border border-digilit-surface-highlight rounded-xl text-white placeholder-digilit-text-sec focus:outline-none focus:border-digilit-primary focus:ring-1 focus:ring-digilit-primary transition-all" 
-                  placeholder="Search for a module (e.g. Internet)..." 
+                  placeholder={t('common.search')} 
                   type="text"
                 />
               </div>
               <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
                 <button className="px-6 py-3.5 rounded-xl bg-digilit-primary text-digilit-bg-dark font-bold text-sm whitespace-nowrap shadow-lg shadow-digilit-primary/20">All Modules</button>
-                <button className="px-6 py-3.5 rounded-xl bg-digilit-surface-dark text-digilit-text-sec hover:text-white border border-digilit-surface-highlight font-semibold text-sm whitespace-nowrap transition-colors">In Progress</button>
-                <button className="px-6 py-3.5 rounded-xl bg-digilit-surface-dark text-digilit-text-sec hover:text-white border border-digilit-surface-highlight font-semibold text-sm whitespace-nowrap transition-colors">Completed</button>
-                <button className="px-6 py-3.5 rounded-xl bg-digilit-surface-dark text-digilit-text-sec hover:text-white border border-digilit-surface-highlight font-semibold text-sm whitespace-nowrap transition-colors">Downloaded</button>
+                <button className="px-6 py-3.5 rounded-xl bg-digilit-surface-dark text-digilit-text-sec hover:text-white border border-digilit-surface-highlight font-semibold text-sm whitespace-nowrap transition-colors">{t('progress.inProgress')}</button>
+                <button className="px-6 py-3.5 rounded-xl bg-digilit-surface-dark text-digilit-text-sec hover:text-white border border-digilit-surface-highlight font-semibold text-sm whitespace-nowrap transition-colors">{t('progress.completed')}</button>
+                <button className="px-6 py-3.5 rounded-xl bg-digilit-surface-dark text-digilit-text-sec hover:text-white border border-digilit-surface-highlight font-semibold text-sm whitespace-nowrap transition-colors">{t('common.download')}</button>
               </div>
             </div>
 
@@ -154,7 +156,7 @@ export const DigitalLiteracy: React.FC = () => {
                   ></div>
                   <div className="absolute top-4 right-4 z-20 bg-green-500/20 backdrop-blur-md border border-green-500/30 text-green-400 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
                     <span className="material-symbols-outlined text-[16px]">check_circle</span>
-                    Completed
+                    {t('progress.completed')}
                   </div>
                   <div className="absolute top-4 left-4 z-20 bg-black/40 backdrop-blur-md rounded-full p-2 text-white" title="Available Offline">
                     <span className="material-symbols-outlined text-[20px]">cloud_done</span>
@@ -189,7 +191,7 @@ export const DigitalLiteracy: React.FC = () => {
                   ></div>
                   <div className="absolute top-4 right-4 z-20 bg-digilit-primary/20 backdrop-blur-md border border-digilit-primary/30 text-digilit-primary px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
                     <span className="material-symbols-outlined text-[16px]">timelapse</span>
-                    In Progress
+                    {t('progress.inProgress')}
                   </div>
                   <div className="absolute top-4 left-4 z-20 bg-black/40 backdrop-blur-md rounded-full p-2 text-white" title="Available Offline">
                     <span className="material-symbols-outlined text-[20px]">cloud_done</span>
@@ -217,7 +219,7 @@ export const DigitalLiteracy: React.FC = () => {
                   </div>
                   <button className="w-full py-3 rounded-xl bg-digilit-primary text-digilit-bg-dark font-bold text-sm hover:bg-digilit-primary-dark transition-colors flex items-center justify-center gap-2 shadow-lg shadow-digilit-primary/20 hover:shadow-digilit-primary/40">
                     <span className="material-symbols-outlined">play_arrow</span>
-                    Continue Learning
+                    {t('common.resume')}
                   </button>
                 </div>
               </div>
@@ -232,7 +234,7 @@ export const DigitalLiteracy: React.FC = () => {
                   ></div>
                   <div className="absolute top-4 right-4 z-20 bg-digilit-primary/20 backdrop-blur-md border border-digilit-primary/30 text-digilit-primary px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
                     <span className="material-symbols-outlined text-[16px]">timelapse</span>
-                    In Progress
+                    {t('progress.inProgress')}
                   </div>
                 </div>
                 <div className="p-6 flex flex-col flex-1 gap-4">
@@ -255,7 +257,7 @@ export const DigitalLiteracy: React.FC = () => {
                   </div>
                   <button className="w-full py-3 rounded-xl bg-digilit-primary text-digilit-bg-dark font-bold text-sm hover:bg-digilit-primary-dark transition-colors flex items-center justify-center gap-2 shadow-lg shadow-digilit-primary/20 hover:shadow-digilit-primary/40">
                     <span className="material-symbols-outlined">play_arrow</span>
-                    Continue Learning
+                    {t('common.resume')}
                   </button>
                 </div>
               </div>
@@ -270,7 +272,7 @@ export const DigitalLiteracy: React.FC = () => {
                   ></div>
                   <div className="absolute top-4 right-4 z-20 bg-gray-500/20 backdrop-blur-md border border-gray-500/30 text-gray-300 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
                     <span className="material-symbols-outlined text-[16px]">radio_button_unchecked</span>
-                    Not Started
+                    {t('progress.notStarted')}
                   </div>
                   <div className="absolute top-4 left-4 z-20 bg-black/40 backdrop-blur-md rounded-full p-2 text-digilit-text-sec" title="Download Required">
                     <span className="material-symbols-outlined text-[20px]">cloud_download</span>
@@ -345,3 +347,4 @@ export const DigitalLiteracy: React.FC = () => {
     </div>
   );
 };
+
